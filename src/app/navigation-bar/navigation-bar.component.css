@@ -1,0 +1,39 @@
+body {
+    color: #5a5a5a;
+}
+  
+.dropdown-menu {
+    opacity: 90%;
+}
+
+.dropdown-menu-right {
+    right: 0px;
+    left: auto;
+}
+
+.navbar {
+    opacity: 90%;
+}
+  
+.dropdown-item:focus {
+    background-color: #FFC312;
+}
+  
+.navbar-brand {
+    font-family: 'Brush Script MT';
+    font-size: 30px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+  
+.btn-yellow{
+    font-size: 15px;
+    margin-left: 5px;
+    color: black;
+    background-color: #FFC312;
+}
+  
+.search-btn:hover {
+    opacity: 80%;
+    background-color: white;
+}

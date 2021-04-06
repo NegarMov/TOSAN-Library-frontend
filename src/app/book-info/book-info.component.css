@@ -1,0 +1,115 @@
+html, body, main, footer {
+    overflow: auto;
+}
+  
+body {
+    color: #5a5a5a;
+}
+  
+.inner {
+    background-color: white; 
+    padding-top: 3rem;
+}
+  
+.btn {
+    margin: 10px;
+    margin-left: 0px;
+}
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+  
+  
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+  
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+  
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 4rem;
+    }
+}
+  
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+}
+  
+  
+/***Stars***/
+  
+.checked {
+    color: #FD4;
+}
+  
+.rating-box {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+  
+div.stars {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+}
+  
+input.star {
+    display: none;
+}
+  
+label.star {
+    float: right;
+    padding: 4px;
+    padding-bottom: 0px;
+    margin: 0px;
+    font-size: 25px;
+    color: #4A148C;
+    transition: all .2s
+}
+  
+input.star:checked~label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s
+}
+  
+input.star-5:checked~label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 30px #952
+}
+  
+input.star-1:checked~label.star:before {
+    color: #F62
+}
+  
+label.star:hover {
+    transform: scale(1.3)
+}
+  
+label.star:before {
+    content: '\f006';
+    font-family: FontAwesome
+}
