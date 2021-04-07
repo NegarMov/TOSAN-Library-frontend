@@ -7,13 +7,19 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { BookInfoComponent } from './book-info/book-info.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HistoryItemComponent } from './dashboard/history-item/history-item.component';
+import { RecommendedItemComponent } from './dashboard/recommended-item/recommended-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     BookInfoComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent,
+    HistoryItemComponent,
+    RecommendedItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,4 @@
+.list-group-item:active {
+    background-color: transparent;
+    border-color: transparent;
+}
