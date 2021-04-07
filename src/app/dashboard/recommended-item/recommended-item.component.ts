@@ -4,7 +4,7 @@ import { RecommendedItem } from '../recommended-item';
 @Component({
   selector: 'app-recommended-item',
   templateUrl: './recommended-item.component.html',
-  styleUrls: ['../dashboard.component.css']
+  styleUrls: ['../dashboard.component.css', './recommended-item.component.css']
 })
 export class RecommendedItemComponent implements OnInit {
   

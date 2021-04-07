@@ -1,0 +1,15 @@
+<a class="list-group-item list-group-item-action" href="../Book info/index.html" target="_blank">
+    <div style="display:inline-block;">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">200x200</text></svg>
+    </div>
+    <div class="list-group-item-text">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{bookTitle}}</h5>
+            <small>{{startDate.toLocaleString()}}</small>
+        </div>
+        <h6 class="text-muted">By: {{bookAuthor}}</h6>
+        <p class="mb-1">{{bookSummary}}</p>
+        <small>Status: </small>
+        <span class="badge badge-pill" [ngClass]="{'badge-success': status=='Accepted', 'badge-danger': status=='Rejected', 'badge-info': status=='Pending'}">{{status}}</span>
+    </div>
+</a>

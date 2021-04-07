@@ -1,0 +1,16 @@
+<body>
+    <div class="inner">
+        <main role="main">
+            <div class="container">
+            <h1>Your requests</h1>
+                <div class="list-group">
+                    <div class="list-group list-group-flush">
+                        <div *ngFor="let ri of requestItems">
+                            <app-request-item [item]="ri"></app-request-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

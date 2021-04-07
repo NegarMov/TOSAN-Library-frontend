@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HistoryItemComponent } from './dashboard/history-item/history-item.component';
 import { RecommendedItemComponent } from './dashboard/recommended-item/recommended-item.component';
+import { RequestsComponent } from './requests/requests.component';
+import { RequestItemComponent } from './requests/request-item/request-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RecommendedItemComponent } from './dashboard/recommended-item/recommend
     FooterComponent,
     DashboardComponent,
     HistoryItemComponent,
-    RecommendedItemComponent
+    RecommendedItemComponent,
+    RequestsComponent,
+    RequestItemComponent
   ],
   imports: [
     BrowserModule,
