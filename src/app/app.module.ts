@@ -12,6 +12,7 @@ import { HistoryItemComponent } from './dashboard/history-item/history-item.comp
 import { RecommendedItemComponent } from './dashboard/recommended-item/recommended-item.component';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestItemComponent } from './requests/request-item/request-item.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RequestItemComponent } from './requests/request-item/request-item.compo
     HistoryItemComponent,
     RecommendedItemComponent,
     RequestsComponent,
-    RequestItemComponent
+    RequestItemComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

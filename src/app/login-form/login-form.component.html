@@ -1,0 +1,48 @@
+<body>
+    <div class="container"  style="display: flex; justify-content: center; align-items: center;">
+        <img src = "../../assets/images/Library BG.jpg"/>
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Sign In</h1>
+                    <!-- <div class="d-flex justify-content-end position-cnt">
+                        <button class = "btn position-btn">As User</button>
+                        <button class = "btn position-btn">As Librarian</button>
+                    </div> -->
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="username" placeholder="username" [(ngModel)]="credentials.username" required>
+                        </div>
+                        <small *ngIf="!validUsername" class="input-error">*username is required</small>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="password" placeholder="password" [(ngModel)]="credentials.password" required>
+                        </div>
+                        <small *ngIf="!validPassword" class="input-error">*password is required</small>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox" name="remember-me" [(ngModel)]="rememberMe">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Log in" class="btn float-right login_btn" (click)="onsubmit()">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="../Signup form/index.html">Sign Up!</a>
+                    </div>
+                    <!-- <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
