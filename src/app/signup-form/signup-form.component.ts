@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-signup-form',
+  templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.css']
 })
-export class LoginFormComponent implements OnInit {
+export class SignupFormComponent implements OnInit {
 
-  credentials = {username: "", password: ""};
+  credentials = {username: "", password: "", confirmPassword: ""};
 
   rememberMe: boolean = false;
   validUsername: boolean = true;
   validPassword: boolean = true;
+  passwordMatch: boolean = true;
 
   onsubmit() {
     if (this.credentials.username)
@@ -22,6 +23,10 @@ export class LoginFormComponent implements OnInit {
       this.validPassword = true;
     else
       this.validPassword = false;
+    if (this.credentials.password == this.credentials.confirmPassword)
+      this.passwordMatch = true;
+    else
+      this.passwordMatch = false;
   }
 
   constructor() { }
