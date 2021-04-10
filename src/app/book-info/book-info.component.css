@@ -1,4 +1,8 @@
-html, body, main, footer {
+body {
+    height: 100vh;
+}
+
+body, main, footer {
     overflow: auto;
 }
   

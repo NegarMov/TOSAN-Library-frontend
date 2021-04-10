@@ -14,14 +14,8 @@ export class LoginFormComponent implements OnInit {
   validPassword: boolean = true;
 
   onsubmit() {
-    if (this.credentials.username)
-      this.validUsername = true;
-    else
-      this.validUsername = false;
-    if (this.credentials.password)
-      this.validPassword = true;
-    else
-      this.validPassword = false;
+    this.validUsername = (this.credentials.username)? true : false;
+    this.validPassword = (this.credentials.password)? true : false;
   }
 
   constructor() { }

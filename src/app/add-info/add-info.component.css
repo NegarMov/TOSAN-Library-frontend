@@ -1,0 +1,60 @@
+body {
+    height: 100vh;
+}
+
+body, main, footer {
+    overflow: auto;
+}
+  
+body {
+    color: #5a5a5a;
+}
+  
+.inner {
+    background-color: white; 
+    padding-top: 3rem;
+}
+
+.list-group {
+    margin: 3.5rem;
+}
+
+.list-group-item.active {
+    background-color: #FFC312;
+    border-color: #FFC312;
+}
+
+.input-group-prepend span {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFC312;
+    color: white;
+    border:0 !important;
+}
+
+input:focus, textarea:focus {
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.input-error {
+    color: #FFC312; 
+    position: relative; 
+    top: -15px;
+}
+
+.add_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: black;
+    background-color: #FFC312;
+    width: fit-content;
+}
+
+.add_btn:hover {
+    opacity: 90%;
+}

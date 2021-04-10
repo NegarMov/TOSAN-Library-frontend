@@ -1,0 +1,108 @@
+<body>
+    <div class="inner">
+        <main role="main">
+            <div class="row" style="margin: 3rem">
+                <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-book">Add Book</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-author">Add Author</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-publisher">Add Publisher</a>
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-book">
+                        <h3>Add a new book</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Title</span>
+                                </div>
+                                <input type="text" class="form-control" name="title" placeholder="Book Title" [(ngModel)]="newBook.title" required>
+                            </div>
+                            <small *ngIf="!validBookTitle" class="input-error">*book title is required</small>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Author</span>
+                                </div>
+                                <input type="text" class="form-control" name="author" placeholder="Book Author" [(ngModel)]="newBook.author" required>
+                            </div>
+                            <small *ngIf="!validBookAuthor" class="input-error">*book author is required</small>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Publisher</span>
+                                </div>
+                                <input type="text" class="form-control" name="publisher" placeholder="Book Publisher" [(ngModel)]="newBook.publisher" required>
+                            </div>
+                            <small *ngIf="!validBookPublisher" class="input-error">*book publisher is required</small>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Summary</span>
+                                </div>
+                                <textarea class="form-control" name="summary" rows="3" placeholder="Book Summary" [(ngModel)]="newBook.summary"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group-prepend" style="display: inline-block;">
+                                    <span class="input-group-text">Cover</span>
+                                </div>
+                                <input type="file" class="form-control-file" style="display: inline-block; width: fit-content; margin-left: 20px;" (change)="onFileChange($event)">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Add Book" class="btn float-right add_btn" (click)="onaddBook()">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="list-author">
+                        <h3>Add a new Author</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Name</span>
+                                </div>
+                                <input type="text" class="form-control" name="name" placeholder="Author Name" [(ngModel)]="newAuthor.name" required>
+                            </div>
+                            <small *ngIf="!validAuthorName" class="input-error">*author name is required</small>
+
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Surname</span>
+                                </div>
+                                <input type="text" class="form-control" name="surname" placeholder="Author Surname" [(ngModel)]="newAuthor.surname" required>
+                            </div>
+                            <small *ngIf="!validAuthorSurname" class="input-error">*author last name is required</small>
+
+                            <div class="form-group">
+                                <input type="submit" value="Add Author" class="btn float-right add_btn" (click)="onaddAuthor()">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="list-publisher">
+                        <h3>Add a new Publisher</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Name</span>
+                                </div>
+                                <input type="text" class="form-control" name="name" placeholder="Publisher Name" [(ngModel)]="newPublisher.name" required>
+                            </div>
+                            <small *ngIf="!validPublisherName" class="input-error">*publisher name is required</small>
+
+                            <div class="form-group">
+                                <input type="submit" value="Add Publisher" class="btn float-right add_btn" (click)="onaddPublisher()">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

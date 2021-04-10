@@ -15,6 +15,7 @@ import { RequestItemComponent } from './requests/request-item/request-item.compo
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
+import { AddInfoComponent } from './add-info/add-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
     RequestItemComponent,
     LoginFormComponent,
     SignupFormComponent,
-    ChangePasswordFormComponent
+    ChangePasswordFormComponent,
+    AddInfoComponent
   ],
   imports: [
     BrowserModule,
