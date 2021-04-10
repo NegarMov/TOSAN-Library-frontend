@@ -1,0 +1,73 @@
+<a class="list-group-item list-group-item-action">
+    <div style="display: inline-block; height: fit-content; margin-top: auto; margin-bottom: auto;">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">75x75</text></svg>
+    </div>
+    <div class="list-item-text">
+        <div class="d-flex w-100 justify-content-between">
+            <a routerLink="/book/{{title}}" target="_blank"><h5 class="mb-1">{{title}}</h5></a>
+            <div>
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
+                <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
+            </div>
+        </div>
+        <h6 class="text-muted">By: {{author}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{publisher}}</h6>
+        <p>Summary: {{summary}}</p>
+    </div>
+</a>
+
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit Book Info</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Title</span>
+                    </div>
+                    <input type="text" class="form-control" [placeholder]="title" name="title" [(ngModel)]="editedInfo.title" required>
+                    <script>document.getElementsByName("title").value = title</script>
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Author</span>
+                    </div>
+                    <input type="text" class="form-control" [placeholder]="author" name="author" [(ngModel)]="editedInfo.author" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Publisher</span>
+                    </div>
+                    <input type="text" class="form-control" [placeholder]="publisher" name="publisher" [(ngModel)]="editedInfo.publisher" required>
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Summary</span>
+                    </div>
+                    <textarea class="form-control" name="summary" rows="3" [placeholder]="summary" [(ngModel)]="editedInfo.summary"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group-prepend" style="display: inline-block;">
+                        <span class="input-group-text">Cover</span>
+                    </div>
+                    <input type="file" class="form-control-file" (change)="onFileChange($event)">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn modal-btn" (click)="oneditBook()" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
