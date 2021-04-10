@@ -112,6 +112,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+                <h1>Authors</h1>
+                <div class="list-group list-group-flush">
+                    <div *ngFor="let a of authors">
+                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

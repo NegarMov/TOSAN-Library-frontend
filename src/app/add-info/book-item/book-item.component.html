@@ -6,7 +6,7 @@
         <div class="d-flex w-100 justify-content-between">
             <a routerLink="/book/{{title}}" target="_blank"><h5 class="mb-1">{{title}}</h5></a>
             <div>
-                <button class="btn btn-secondary" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
+                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + title"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
             </div>
         </div>
@@ -16,7 +16,7 @@
     </div>
 </a>
 
-<div class="modal fade" id="editModal" tabindex="-1">
+<div class="modal fade" id="{{title}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -32,7 +32,6 @@
                         <span class="input-group-text">Title</span>
                     </div>
                     <input type="text" class="form-control" [placeholder]="title" name="title" [(ngModel)]="editedInfo.title" required>
-                    <script>document.getElementsByName("title").value = title</script>
                 </div>
 
                 <div class="input-group form-group">

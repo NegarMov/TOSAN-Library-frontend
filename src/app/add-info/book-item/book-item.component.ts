@@ -19,10 +19,6 @@ export class BookItemComponent implements OnInit {
   summary: string;
   coverUrl: string;
 
-  validBookTitle: boolean = true;
-  validBookAuthor: boolean = true;
-  validBookPublisher: boolean = true;
-
   constructor() {
     
   }
@@ -53,7 +49,7 @@ export class BookItemComponent implements OnInit {
   }
 
   ondeleteBook() {
-    if (confirm("Are you sure you want to delete this book?")) {
+    if (confirm("Are you sure you want to delete this book (" + this.title + " by " + this.author + ")?")) {
       console.log("deleted");
       this.deleted.emit(this.item);
     }

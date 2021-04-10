@@ -1,0 +1,32 @@
+.list-group-item:active {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.list-group-item:hover {
+    background-color: #FFC312;
+    border-color: #FFC312;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.modal-btn {
+    background-color: #FFC312;
+    border-color: #FFC312;
+}
+
+.modal-btn:hover {
+    opacity: 80%;
+}
+
+.form-control-file {
+    display: inline-block; 
+    width: fit-content; 
+    margin-left: 20px;
+}
+
+h5 {
+    display: inline-block;
+}

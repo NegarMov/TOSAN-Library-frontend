@@ -17,6 +17,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { AddInfoComponent } from './add-info/add-info.component';
 import { BookItemComponent } from './add-info/book-item/book-item.component';
+import { AuthorItemComponent } from './add-info/author-item/author-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BookItemComponent } from './add-info/book-item/book-item.component';
     SignupFormComponent,
     ChangePasswordFormComponent,
     AddInfoComponent,
-    BookItemComponent
+    BookItemComponent,
+    AuthorItemComponent
   ],
   imports: [
     BrowserModule,

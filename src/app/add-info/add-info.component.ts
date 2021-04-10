@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Author } from './author';
 import { Book } from './book';
 
 @Component({
@@ -25,6 +26,11 @@ export class AddInfoComponent implements OnInit {
     { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", summary: "Mew Mew",  coverUrl: "" },
     { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", summary: "Mew Mew Mew",  coverUrl: "" }
   ];
+
+  authors: Author[] = [
+    { name: "Maxeu", surname: "Ben"},
+    { name: "Kyu", surname: "Chan"}
+  ]
 
   constructor() { }
 
@@ -53,6 +59,13 @@ export class AddInfoComponent implements OnInit {
   onaddAuthor() {
     this.validAuthorName = (this.newAuthor.name)? true: false;
     this.validAuthorSurname = (this.newAuthor.surname)? true: false;
+    if (this.validAuthorName && this.validAuthorSurname) {
+      this.authors.push({
+        name: this.newAuthor.name,
+        surname: this.newAuthor.surname
+      });
+      this.newAuthor = {name: "", surname: ""};
+    }
   }
 
   onaddPublisher() {
@@ -63,6 +76,14 @@ export class AddInfoComponent implements OnInit {
     for (var i=0; i<this.books.length; i++)                         
       if (this.books[i] === event) { 
         this.books.splice(i, 1); 
+        break;
+      }
+  }
+
+  deleteAuthor(event: Author) {
+    for (var i=0; i<this.books.length; i++)                         
+      if (this.authors[i] === event) { 
+        this.authors.splice(i, 1); 
         break;
       }
   }
