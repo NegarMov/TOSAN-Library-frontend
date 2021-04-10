@@ -13,15 +13,15 @@ export class DashboardComponent implements OnInit {
   selected: string = "all";
 
   historyItems: HistoryItem[] = [
-    { bookTitle: "A neko in garden", bookAuthor: "Neko Chan", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" },
-    { bookTitle: "Two nekoes in garden", bookAuthor: "Neko San", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" },
-    { bookTitle: "Three nekoes in garden", bookAuthor: "Neko Sama", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" }
+    { bookTitle: "A neko in garden", bookAuthor: "Neko Chan", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" },
+    { bookTitle: "Two nekoes in garden", bookAuthor: "Neko San", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" },
+    { bookTitle: "Three nekoes in garden", bookAuthor: "Neko Sama", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), endDate: "today" }
   ];
 
   recommendedItems: RecommendedItem[] = [
-    { bookTitle: "Tonai no kyu chan", bookAuthor: "Kyu Chan", status: "Read Later", editDate: new Date(2021, 6, 28, 17, 24, 59) },
-    { bookTitle: "Tonai no neko chan", bookAuthor: "Neko San", status: "Rejected", editDate: new Date(2020, 6, 28, 17, 24, 59) },
-    { bookTitle: "Tonai no nekoes chan", bookAuthor: "Neko Sama", status: "Read Later", editDate: new Date(2019, 6, 28, 17, 24, 59) }
+    { bookTitle: "Tonai no kyu chan", bookAuthor: "Kyu Chan", bookPublisher: "TOW", status: "Read Later", editDate: new Date(2021, 6, 28, 17, 24, 59) },
+    { bookTitle: "Tonai no neko chan", bookAuthor: "Neko San", bookPublisher: "TOW", status: "Rejected", editDate: new Date(2020, 6, 28, 17, 24, 59) },
+    { bookTitle: "Tonai no nekoes chan", bookAuthor: "Neko Sama", bookPublisher: "TOW", status: "Read Later", editDate: new Date(2019, 6, 28, 17, 24, 59) }
   ];
 
   onclickAll() {

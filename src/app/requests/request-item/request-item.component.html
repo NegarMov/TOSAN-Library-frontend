@@ -8,6 +8,7 @@
             <small>{{startDate.toLocaleString()}}</small>
         </div>
         <h6 class="text-muted">By: {{bookAuthor}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{bookPublisher}}</h6>
         <p class="mb-1">{{bookSummary}}</p>
         <small>Status: </small>
         <span class="badge badge-pill" [ngClass]="{'badge-success': status=='Accepted', 'badge-danger': status=='Rejected', 'badge-info': status=='Pending'}">{{status}}</span>

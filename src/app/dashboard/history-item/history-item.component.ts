@@ -12,6 +12,7 @@ export class HistoryItemComponent implements OnInit {
 
   bookTitle: string;
   bookAuthor: string;
+  bookPublisher: string;
   startDate: any;
   endDate: any;
 
@@ -22,6 +23,7 @@ export class HistoryItemComponent implements OnInit {
   ngOnInit(): void {
     this.bookTitle = this.item.bookTitle;
     this.bookAuthor = this.item.bookAuthor;
+    this.bookPublisher = this.item.bookPublisher;
     this.startDate = this.item.startDate;
     this.endDate = this.item.endDate;
   }

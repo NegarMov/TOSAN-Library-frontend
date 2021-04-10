@@ -13,6 +13,7 @@ export class RecommendedItemComponent implements OnInit {
 
   bookTitle: string;
   bookAuthor: string;
+  bookPublisher: string;
   status: string;
   editDate: Date;
 
@@ -31,6 +32,7 @@ export class RecommendedItemComponent implements OnInit {
   ngOnInit(): void {
     this.bookTitle = this.item.bookTitle;
     this.bookAuthor = this.item.bookAuthor;
+    this.bookPublisher = this.item.bookPublisher;
     this.status = this.item.status;
     this.editDate = this.item.editDate;
   }

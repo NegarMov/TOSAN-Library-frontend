@@ -1,17 +1,11 @@
 <!-- ###### Book Info Page ######
-<app-navigation-bar></app-navigation-bar>
-<app-book-info></app-book-info>
-<app-footer></app-footer> -->
+<app-book-info></app-book-info> -->
 
 <!-- ###### Dashboard Page ######
-<app-navigation-bar></app-navigation-bar>
-<app-dashboard></app-dashboard>
-<app-footer></app-footer> -->
+<app-dashboard></app-dashboard> -->
 
 <!-- ###### Requests Page ######
-<app-navigation-bar></app-navigation-bar>
-<app-requests></app-requests>
-<app-footer></app-footer> -->
+<app-requests></app-requests> -->
 
 <!-- ###### Login Page ######
 <app-login-form></app-login-form> -->
@@ -22,6 +16,6 @@
 <!-- ###### Signup Page ######
 <app-change-password-form></app-change-password-form> -->
 
-<app-navigation-bar></app-navigation-bar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-navigation-bar *ngIf="showNavbar"></app-navigation-bar>
+<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+<app-footer *ngIf="showNavbar"></app-footer>

@@ -12,6 +12,7 @@ export class RequestItemComponent implements OnInit {
 
   bookTitle: string;
   bookAuthor: string;
+  bookPublisher: string;
   startDate: Date;
   bookSummary: string;
   status: string;
@@ -21,6 +22,7 @@ export class RequestItemComponent implements OnInit {
   ngOnInit(): void {
     this.bookTitle = this.item.bookTitle;
     this.bookAuthor = this.item.bookAuthor;
+    this.bookPublisher = this.item.bookPublisher;
     this.startDate = this.item.startDate;
     this.bookSummary = this.item.bookSummary;
     this.status = this.item.status;

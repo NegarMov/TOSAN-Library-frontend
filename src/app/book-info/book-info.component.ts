@@ -9,6 +9,7 @@ export class BookInfoComponent implements OnInit {
 
   bookTitle: string = "First Book EVER!";
   bookAuthor: string = "Maxeu";
+  bookPublisher: string = "The Other";
   bookSummary: string = "This is a book about books? This author writes about books, in fact writes everything except the book itself! You know, it gets a little bit recursive if she did the thing. Wanna be on this journey with her? Read this book!";
   rating: number = 3;
   saveMessage: string = "Add to read later";

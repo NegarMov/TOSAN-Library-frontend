@@ -24,6 +24,7 @@ body {
 .list-group-item {
     display: flex; 
     align-content: center;
+    justify-content: center;
 }
 
 .list-group-item:hover {

@@ -1,4 +1,4 @@
-<a *ngIf="show()" class="list-group-item list-group-item-action" href="../Book info/index.html" target="_blank">
+<a *ngIf="show()" class="list-group-item list-group-item-action" routerLink="/book/{{bookTitle}}" target="_blank">
     <div style="display:inline-block;">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="75" height="75" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">75x75</text></svg>
     </div>
@@ -8,6 +8,7 @@
             <small>{{getDate().toLocaleString()}}</small>
         </div>
         <h6 class="text-muted">By: {{bookAuthor}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{bookPublisher}}</h6>
         <small>Status: 
             <i class="fa fa-bookmark fa-fw" [ngClass]="{'fa-bookmark': (status=='Read Later'), 'fa-ban' : (status=='Rejected')}"></i>
         {{status}}</small>
