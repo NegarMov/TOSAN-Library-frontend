@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RequestItem } from '../request-item';
+import { RequestItem } from '../../_model/request-item';
 
 @Component({
   selector: 'app-request-item',
@@ -20,11 +20,11 @@ export class RequestItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.bookTitle = this.item.bookTitle;
-    this.bookAuthor = this.item.bookAuthor;
-    this.bookPublisher = this.item.bookPublisher;
+    this.bookTitle = this.item.book.title;
+    this.bookAuthor = this.item.book.author;
+    this.bookPublisher = this.item.book.publisher;
+    this.bookSummary = this.item.book.summary;
     this.startDate = this.item.startDate;
-    this.bookSummary = this.item.bookSummary;
     this.status = this.item.status;
   }
 

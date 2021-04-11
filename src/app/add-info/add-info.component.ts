@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Author } from './author';
-import { Book } from './book';
+import { Author } from '../_model/author';
+import { Book } from '../_model/book';
 import { InputTagComponent } from './input-tag/input-tag.component';
-import { Publisher } from './publisher';
+import { Publisher } from '../_model/publisher';
 
 @Component({
   selector: 'app-add-info',

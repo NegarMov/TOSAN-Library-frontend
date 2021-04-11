@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HistoryItem } from '../history-item';
+import { HistoryItem } from '../../_model/history-item';
 
 @Component({
   selector: 'app-history-item',
@@ -21,9 +21,9 @@ export class HistoryItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.bookTitle = this.item.bookTitle;
-    this.bookAuthor = this.item.bookAuthor;
-    this.bookPublisher = this.item.bookPublisher;
+    this.bookTitle = this.item.book.title;
+    this.bookAuthor = this.item.book.author;
+    this.bookPublisher = this.item.book.publisher;
     this.startDate = this.item.startDate;
     this.endDate = this.item.endDate;
   }

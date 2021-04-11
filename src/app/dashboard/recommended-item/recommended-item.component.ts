@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RecommendedItem } from '../recommended-item';
+import { RecommendedItem } from '../../_model/recommended-item';
 
 @Component({
   selector: 'app-recommended-item',
@@ -30,9 +30,9 @@ export class RecommendedItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.bookTitle = this.item.bookTitle;
-    this.bookAuthor = this.item.bookAuthor;
-    this.bookPublisher = this.item.bookPublisher;
+    this.bookTitle = this.item.book.title;
+    this.bookAuthor = this.item.book.author;
+    this.bookPublisher = this.item.book.publisher;
     this.status = this.item.status;
     this.editDate = this.item.editDate;
   }

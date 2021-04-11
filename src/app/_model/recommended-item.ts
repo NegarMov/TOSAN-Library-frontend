@@ -1,7 +1,7 @@
+import { Book } from "./book";
+
 export interface RecommendedItem {
-    bookTitle: string;
-    bookAuthor: string;
-    bookPublisher: string;
+    book: Book;
     status: string;
     editDate: Date;
 }

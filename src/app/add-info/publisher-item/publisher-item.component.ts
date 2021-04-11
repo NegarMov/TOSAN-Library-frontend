@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Publisher } from '../publisher';
+import { Publisher } from '../../_model/publisher';
 
 @Component({
   selector: 'app-publisher-item',

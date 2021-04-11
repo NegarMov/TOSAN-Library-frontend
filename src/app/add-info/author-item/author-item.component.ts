@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Author } from '../author';
+import { Author } from '../../_model/author';
 
 @Component({
   selector: 'app-author-item',

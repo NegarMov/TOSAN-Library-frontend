@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestItem } from './request-item';
+import { RequestItem } from '../_model/request-item';
 
 @Component({
   selector: 'app-requests',
@@ -9,9 +9,9 @@ import { RequestItem } from './request-item';
 export class RequestsComponent implements OnInit {
 
   requestItems: RequestItem[] = [
-    { bookTitle: "A neko in garden", bookAuthor: "Neko Chan", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), bookSummary: "blah blah", status: "Accepted" },
-    { bookTitle: "Two nekoes in garden", bookAuthor: "Neko San", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), bookSummary: "blah", status: "Rejected" },
-    { bookTitle: "Three nekoes in garden", bookAuthor: "Neko Sama", bookPublisher: "TOW", startDate: new Date(2021, 2, 4, 9, 7, 47), bookSummary: "blah blah blah", status: "Pending" }
+    { book: { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", tags: [], summary: "blah blah", coverUrl: ""}, startDate: new Date(2021, 2, 4, 9, 7, 47), status: "Accepted" },
+    { book: { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", tags: [], summary: "blah", coverUrl: "" }, startDate: new Date(2021, 2, 4, 9, 7, 47), status: "Rejected" },
+    { book: { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", tags: [], summary: "blah blah blah", coverUrl: "" }, startDate: new Date(2021, 2, 4, 9, 7, 47), status: "Pending" }
   ];
 
   constructor() { }

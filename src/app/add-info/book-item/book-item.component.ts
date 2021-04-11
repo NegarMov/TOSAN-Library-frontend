@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../../_model/book';
 import { InputTagComponent } from '../input-tag/input-tag.component';
 
 @Component({
