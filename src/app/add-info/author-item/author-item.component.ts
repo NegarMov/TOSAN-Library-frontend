@@ -35,7 +35,6 @@ export class AuthorItemComponent implements OnInit {
 
   ondeleteAuthor() {
     if (confirm("Are you sure you want to delete this author (" + this.name + " " + this.surname + ")?")) {
-      console.log("deleted");
       this.deleted.emit(this.item);
     }
   }

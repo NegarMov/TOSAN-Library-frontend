@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from './author';
 import { Book } from './book';
+import { Publisher } from './publisher';
 
 @Component({
   selector: 'app-add-info',
@@ -32,6 +33,11 @@ export class AddInfoComponent implements OnInit {
     { name: "Kyu", surname: "Chan"}
   ]
 
+  publishers: Publisher[] = [
+    { name: "TOW" },
+    { name: "ALSH" }
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
@@ -48,7 +54,7 @@ export class AddInfoComponent implements OnInit {
         publisher: this.newBook.publisher, 
         summary: this.newBook.summary, 
         coverUrl: this.newBook.summary});
-      this.newBook = {title: "", author: "", publisher: "", summary: "", coverUrl: ""};
+      this.newBook = { title: "", author: "", publisher: "", summary: "", coverUrl: "" };
     }
   }
 
@@ -64,12 +70,18 @@ export class AddInfoComponent implements OnInit {
         name: this.newAuthor.name,
         surname: this.newAuthor.surname
       });
-      this.newAuthor = {name: "", surname: ""};
+      this.newAuthor = { name: "", surname: "" };
     }
   }
 
   onaddPublisher() {
     this.validPublisherName = (this.newPublisher.name)? true: false;
+    if (this.validPublisherName) {
+      this.publishers.push({
+        name: this.newPublisher.name
+      })
+    }
+    this.newPublisher = { name: "" };
   }
 
   deleteBook(event: Book) {
@@ -81,9 +93,17 @@ export class AddInfoComponent implements OnInit {
   }
 
   deleteAuthor(event: Author) {
-    for (var i=0; i<this.books.length; i++)                         
+    for (var i=0; i<this.authors.length; i++)                         
       if (this.authors[i] === event) { 
         this.authors.splice(i, 1); 
+        break;
+      }
+  }
+
+  deletePublisher(event: Publisher) {
+    for (var i=0; i<this.publishers.length; i++)                         
+      if (this.publishers[i] === event) { 
+        this.publishers.splice(i, 1); 
         break;
       }
   }

@@ -18,6 +18,7 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
 import { AddInfoComponent } from './add-info/add-info.component';
 import { BookItemComponent } from './add-info/book-item/book-item.component';
 import { AuthorItemComponent } from './add-info/author-item/author-item.component';
+import { PublisherItemComponent } from './add-info/publisher-item/publisher-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthorItemComponent } from './add-info/author-item/author-item.componen
     ChangePasswordFormComponent,
     AddInfoComponent,
     BookItemComponent,
-    AuthorItemComponent
+    AuthorItemComponent,
+    PublisherItemComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'requests', component: RequestsComponent },
   { path: 'book/:bookTitle', component: BookInfoComponent },
-  { path: 'add-info', component: AddInfoComponent }
+  { path: 'edit-info', component: AddInfoComponent }
 ];
 
 @NgModule({

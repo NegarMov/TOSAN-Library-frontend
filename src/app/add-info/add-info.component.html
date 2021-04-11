@@ -121,6 +121,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+                <h1>Publishers</h1>
+                <div class="list-group list-group-flush">
+                    <div *ngFor="let p of publishers">
+                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>
