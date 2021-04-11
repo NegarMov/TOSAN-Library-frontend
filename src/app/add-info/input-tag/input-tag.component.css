@@ -1,0 +1,18 @@
+.badge {
+    margin: 2px; 
+    width: fit-content; 
+    height: fit-content; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+p {
+    display: inline-block; 
+    margin: 0px; 
+    padding: 0px;
+}
+
+.tag {
+    color: white; opacity: 70%; font-size: 15px;
+}

@@ -19,6 +19,7 @@ import { AddInfoComponent } from './add-info/add-info.component';
 import { BookItemComponent } from './add-info/book-item/book-item.component';
 import { AuthorItemComponent } from './add-info/author-item/author-item.component';
 import { PublisherItemComponent } from './add-info/publisher-item/publisher-item.component';
+import { InputTagComponent } from './add-info/input-tag/input-tag.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PublisherItemComponent } from './add-info/publisher-item/publisher-item
     AddInfoComponent,
     BookItemComponent,
     AuthorItemComponent,
-    PublisherItemComponent
+    PublisherItemComponent,
+    InputTagComponent,
   ],
   imports: [
     BrowserModule,

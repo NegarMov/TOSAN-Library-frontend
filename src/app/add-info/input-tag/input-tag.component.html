@@ -1,0 +1,18 @@
+<div class="containter">
+    <div *ngFor="let t of tags" style="display: inline-block;">
+        <h6>
+            <div class="badge badge-warning">
+                <p>{{t}}</p>
+                <span class="tag" (click)="onclose(t)">
+                    <i class="fa fa-times-circle fa-fw"></i>
+                </span>
+            </div>
+        </h6>
+    </div>
+</div>
+<div class="input-group form-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Genre</span>
+    </div>
+    <input type="text" class="form-control" name="genre" placeholder="add genre tags here..." [(ngModel)]="input" (keyup)="onaddTag($event)" (keydown)="onkeyDown($event)">
+</div>

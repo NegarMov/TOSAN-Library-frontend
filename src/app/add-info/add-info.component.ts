@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Author } from './author';
 import { Book } from './book';
+import { InputTagComponent } from './input-tag/input-tag.component';
 import { Publisher } from './publisher';
 
 @Component({
@@ -9,6 +10,8 @@ import { Publisher } from './publisher';
   styleUrls: ['./add-info.component.css']
 })
 export class AddInfoComponent implements OnInit {
+
+  @ViewChild(InputTagComponent) tagInput: InputTagComponent;
 
   newBook = {title: "", author: "", publisher: "", summary: "", coverUrl: ""};
   validBookTitle: boolean = true;
@@ -23,9 +26,9 @@ export class AddInfoComponent implements OnInit {
   validPublisherName: boolean = true;
 
   books: Book[] = [
-    { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", summary: "Mew",  coverUrl: "" },
-    { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", summary: "Mew Mew",  coverUrl: "" },
-    { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", summary: "Mew Mew Mew",  coverUrl: "" }
+    { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", tags: ["comdey"], summary: "M",  coverUrl: "" },
+    { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", tags: ["comdey"], summary: "M M",  coverUrl: "" },
+    { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", tags: ["comdey" , "psychology"], summary: "M M M",  coverUrl: "" }
   ];
 
   authors: Author[] = [
@@ -51,10 +54,12 @@ export class AddInfoComponent implements OnInit {
       this.books.push({
         title : this.newBook.title, 
         author: this.newBook.author, 
-        publisher: this.newBook.publisher, 
+        publisher: this.newBook.publisher,
+        tags: this.tagInput.tags,
         summary: this.newBook.summary, 
         coverUrl: this.newBook.summary});
       this.newBook = { title: "", author: "", publisher: "", summary: "", coverUrl: "" };
+      this.tagInput.tags = [];
     }
   }
 

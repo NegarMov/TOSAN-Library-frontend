@@ -6,12 +6,17 @@
         <div class="d-flex w-100 justify-content-between">
             <a routerLink="/book/{{title}}" target="_blank"><h5 class="mb-1">{{title}}</h5></a>
             <div>
-                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + title"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
+                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + title" (click)="onstartEdit()"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
             </div>
         </div>
         <h6 class="text-muted">By: {{author}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">Publisher: {{publisher}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">tags:
+            <div style="display: inline-block;" *ngFor="let t of tags">
+                <span style="margin: 1px;" class="badge badge-pill badge-warning">{{t}}</span>
+            </div>
+        </h6>
         <p>Summary: {{summary}}</p>
     </div>
 </a>
@@ -47,6 +52,8 @@
                     </div>
                     <input type="text" class="form-control" [placeholder]="publisher" name="publisher" [(ngModel)]="editedInfo.publisher" required>
                 </div>
+
+                <app-input-tag></app-input-tag>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
