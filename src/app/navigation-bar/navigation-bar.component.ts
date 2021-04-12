@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   newRequests: number = 5;
+  access: string = "admin"; //change later
 
   constructor() { }
 

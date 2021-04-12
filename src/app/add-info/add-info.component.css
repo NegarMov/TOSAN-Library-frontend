@@ -141,3 +141,12 @@ input:focus, textarea:focus {
 .add_btn:hover {
     opacity: 90%;
 }
+
+.select {
+    display: inline-block;
+}
+
+.select:focus {
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}

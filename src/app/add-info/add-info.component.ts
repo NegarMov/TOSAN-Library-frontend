@@ -18,18 +18,18 @@ export class AddInfoComponent implements OnInit {
   validBookAuthor: boolean = true;
   validBookPublisher: boolean = true;
   bookSearchRes = new Array();
-  bookSearchedToken: string;
+  bookSearchedToken: string = "";
 
   newAuthor = {name: "", surname: ""};
   validAuthorName: boolean = true;
   validAuthorSurname: boolean = true;
   authorSearchRes = new Array();
-  authorSearchedToken: string;
+  authorSearchedToken: string = "";
 
   newPublisher = {name: ""};
   validPublisherName: boolean = true;
   publisherSearchRes = new Array();
-  publisherSearchedToken: string;
+  publisherSearchedToken: string = "";
 
   books: Book[] = [
     { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", tags: ["comdey"], summary: "M",  coverUrl: "" },
@@ -48,6 +48,7 @@ export class AddInfoComponent implements OnInit {
   ]
 
   constructor() {
+    // get the actual array of books, authors and publishers from backend and initiate them here.
     for (var i=0; i<this.books.length; i++)
       this.bookSearchRes[i] = true;
     for (var i=0; i<this.authors.length; i++)
@@ -150,4 +151,11 @@ export class AddInfoComponent implements OnInit {
       this.publisherSearchRes[i] = (this.publishers[i].name.toLowerCase().includes(this.publisherSearchedToken.toLowerCase()));
   }
 
+  getAuthors() {
+    return this.authors.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  getPublishers() {
+    return this.publishers.sort((a, b) => a.name.localeCompare(b.name));
+  }
 }
