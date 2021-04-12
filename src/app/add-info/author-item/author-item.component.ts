@@ -13,28 +13,20 @@ export class AuthorItemComponent implements OnInit {
 
   editedInfo = { name: "", surname: ""};
 
-  name: string;
-  surname: string;
+  constructor() { }
 
-  constructor() {
-    
-  }
-
-  ngOnInit(): void {
-    this.name = this.item.name;
-    this.surname = this.item.surname;
-  }
+  ngOnInit(): void { }
 
   oneditAuthor() {
     if (this.editedInfo.name)
-      this.name = this.editedInfo.name;
+      this.item.name = this.editedInfo.name;
     if (this.editedInfo.surname)
-      this.surname = this.editedInfo.surname;
+      this.item.surname = this.editedInfo.surname;
     this.editedInfo = { name: "", surname: ""};
   }
 
   ondeleteAuthor() {
-    if (confirm("Are you sure you want to delete this author (" + this.name + " " + this.surname + ")?")) {
+    if (confirm("Are you sure you want to delete this author (" + this.item.name + " " + this.item.surname + ")?")) {
       this.deleted.emit(this.item);
     }
   }

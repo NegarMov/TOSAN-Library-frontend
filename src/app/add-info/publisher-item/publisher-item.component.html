@@ -1,16 +1,16 @@
 <a class="list-group-item list-group-item-action">
   <div class="d-flex w-100 justify-content-between">
-      <a routerLink="/publisher/{{name}}" target="_blank">
-          <h5 class="mb-1">{{name}}</h5>
+      <a routerLink="/publisher/{{item.name}}" target="_blank">
+          <h5 class="mb-1">{{item.name}}</h5>
       </a>
       <div>
-          <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + name"><i class="fa fa-edit fa-fw"></i>Edit Publisher</button>
+          <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Publisher</button>
           <button class="btn btn-secondary" (click)="ondeletePublisher()"><i class="fa fa-trash fa-fw"></i>Delete Publisher</button>
       </div>
   </div>
 </a>
 
-<div class="modal fade" id="{{name}}" tabindex="-1">
+<div class="modal fade" id="{{item.name}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -25,7 +25,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Name</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="name" name="name" [(ngModel)]="editedInfo.name" required>
+                    <input type="text" class="form-control" [placeholder]="item.name" name="name" [(ngModel)]="editedInfo.name" required>
                 </div>
                 
                 <div class="modal-footer">

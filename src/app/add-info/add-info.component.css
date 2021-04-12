@@ -11,6 +11,13 @@ body {
     min-height: 85vh;
     padding-top: 3rem;
 } 
+
+.btn-yellow{
+    font-size: 15px;
+    margin-left: 5px;
+    color: black;
+    background-color: #FFC312;
+}
   
 .list-item-text {
     display:inline-block; 
@@ -42,6 +49,13 @@ body {
   
 h1 {
     margin: 3rem;
+}
+
+.header-box {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding-right: 45px;
 }
   
 .featurette-heading {

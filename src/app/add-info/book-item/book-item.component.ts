@@ -16,40 +16,25 @@ export class BookItemComponent implements OnInit {
 
   editedInfo = { title: "", author: "", publisher: "", summary: "", coverUrl: "" };
 
-  title: string;
-  author: string;
-  publisher: string;
-  tags: string[];
-  summary: string;
-  coverUrl: string;
+  constructor() { }
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.title = this.item.title;
-    this.author = this.item.author;
-    this.publisher = this.item.publisher;
-    this.tags = this.item.tags;
-    this.summary = this.item.summary;
-    this.coverUrl = this.item.coverUrl;
-  }
+  ngOnInit(): void { }
 
   onstartEdit() {
-    this.tagInput.tags = this.tags;
+    this.tagInput.tags = this.item.tags;
   }
 
   oneditBook() {
     if (this.editedInfo.title)
-      this.title = this.editedInfo.title;
+      this.item.title = this.editedInfo.title;
     if (this.editedInfo.author)
-      this.author = this.editedInfo.author;
+      this.item.author = this.editedInfo.author;
     if (this.editedInfo.publisher)
-      this.publisher = this.editedInfo.publisher;
+      this.item.publisher = this.editedInfo.publisher;
     if (this.editedInfo.summary)
-      this.summary = this.editedInfo.summary;
+      this.item.summary = this.editedInfo.summary;
     if (this.editedInfo.coverUrl)
-      this.coverUrl = this.editedInfo.coverUrl;
+      this.item.coverUrl = this.editedInfo.coverUrl;
   }
 
   onFileChange(event: any) {
@@ -57,7 +42,7 @@ export class BookItemComponent implements OnInit {
   }
 
   ondeleteBook() {
-    if (confirm("Are you sure you want to delete this book (" + this.title + " by " + this.author + ")?")) {
+    if (confirm("Are you sure you want to delete this book (" + this.item.title + " by " + this.item.author + ")?")) {
       this.deleted.emit(this.item);
     }
   }

@@ -106,29 +106,49 @@
                 </div>
             </div>
 
+            <hr>
+
             <div class="container">
-                <h1>Books</h1>
+                <div class="header-box">
+                    <h1 style="display: inline-block;">Books</h1>
+                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search Books" [(ngModel)]="bookSearchedToken" [ngModelOptions]="{standalone: true}">
+                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchBook()">Search</button>
+                    </form>
+                </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let b of books">
-                        <app-book-item [item]="b" (deleted)="deleteBook($event)"></app-book-item>
+                    <div *ngFor="let b of books; let i = index">
+                        <app-book-item *ngIf="bookSearchRes[i]" [item]="b" (deleted)="deleteBook($event)"></app-book-item>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <h1>Authors</h1>
+                <div class="header-box">
+                    <h1 style="display: inline-block;">Authors</h1>
+                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search Authors" [(ngModel)]="authorSearchedToken" [ngModelOptions]="{standalone: true}">
+                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchAuthor()">Search</button>
+                    </form>
+                </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let a of authors">
-                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
+                    <div *ngFor="let a of authors; let i = index">
+                        <app-author-item *ngIf="authorSearchRes[i]" [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <h1>Publishers</h1>
+                <div class="header-box">
+                    <h1 style="display: inline-block;">Publishers</h1>
+                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search Publishers" [(ngModel)]="publisherSearchedToken" [ngModelOptions]="{standalone: true}">
+                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchPublisher()">Search</button>
+                    </form>
+                </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let p of publishers">
-                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
+                    <div *ngFor="let p of publishers; let i = index">
+                        <app-publisher-item *ngIf="publisherSearchRes[i]" [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
                     </div>
                 </div>
             </div>

@@ -13,24 +13,18 @@ export class PublisherItemComponent implements OnInit {
 
   editedInfo = { name: ""};
 
-  name: string;
+  constructor() { }
 
-  constructor() {
-    
-  }
-
-  ngOnInit(): void {
-    this.name = this.item.name;
-  }
+  ngOnInit(): void { }
 
   oneditPublisher() {
     if (this.editedInfo.name)
-      this.name = this.editedInfo.name;
+      this.item.name = this.editedInfo.name;
     this.editedInfo = { name: ""};
   }
 
   ondeletePublisher() {
-    if (confirm("Are you sure you want to delete this publisher (" + this.name + ")?")) {
+    if (confirm("Are you sure you want to delete this publisher (" + this.item.name + ")?")) {
       this.deleted.emit(this.item);
     }
   }

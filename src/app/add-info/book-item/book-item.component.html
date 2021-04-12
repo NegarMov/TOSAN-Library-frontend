@@ -1,27 +1,27 @@
-<a class="list-group-item list-group-item-action" routerLink="/book/{{title}}" target="_blank">
+<a class="list-group-item list-group-item-action">
     <div style="display: inline-block; height: fit-content; margin-top: auto; margin-bottom: auto;">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">75x75</text></svg>
     </div>
     <div class="list-item-text">
         <div class="d-flex w-100 justify-content-between">
-            <a routerLink="/book/{{title}}" target="_blank"><h5 class="mb-1">{{title}}</h5></a>
+            <a routerLink="/book/{{item.title}}" target="_blank"><h5 class="mb-1">{{item.title}}</h5></a>
             <div>
-                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + title" (click)="onstartEdit()"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
+                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + item.title" (click)="onstartEdit()"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
             </div>
         </div>
-        <h6 class="text-muted">By: {{author}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{publisher}}</h6>
+        <h6 class="text-muted">By: {{item.author}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.publisher}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">tags:
-            <div style="display: inline-block;" *ngFor="let t of tags">
+            <div style="display: inline-block;" *ngFor="let t of item.tags">
                 <span style="margin: 1px;" class="badge badge-pill badge-warning">{{t}}</span>
             </div>
         </h6>
-        <p>Summary: {{summary}}</p>
+        <p>Summary: {{item.summary}}</p>
     </div>
 </a>
 
-<div class="modal fade" id="{{title}}" tabindex="-1">
+<div class="modal fade" id="{{item.title}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -36,21 +36,21 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Title</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="title" name="title" [(ngModel)]="editedInfo.title" required>
+                    <input type="text" class="form-control" [placeholder]="item.title" name="title" [(ngModel)]="editedInfo.title" required>
                 </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Author</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="author" name="author" [(ngModel)]="editedInfo.author" required>
+                    <input type="text" class="form-control" [placeholder]="item.author" name="author" [(ngModel)]="editedInfo.author" required>
                 </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Publisher</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="publisher" name="publisher" [(ngModel)]="editedInfo.publisher" required>
+                    <input type="text" class="form-control" [placeholder]="item.publisher" name="publisher" [(ngModel)]="editedInfo.publisher" required>
                 </div>
 
                 <app-input-tag></app-input-tag>
@@ -59,7 +59,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Summary</span>
                     </div>
-                    <textarea class="form-control" name="summary" rows="3" [placeholder]="summary" [(ngModel)]="editedInfo.summary"></textarea>
+                    <textarea class="form-control" name="summary" rows="3" [placeholder]="item.summary" [(ngModel)]="editedInfo.summary"></textarea>
                 </div>
 
                 <div class="form-group">
