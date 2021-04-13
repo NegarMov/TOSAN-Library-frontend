@@ -108,3 +108,69 @@ hr {
       font-size: 3.5rem;
     }
 }
+
+.btn-yellow{
+    font-size: 15px;
+    margin-left: 5px;
+    color: black;
+    background-color: #FFC312;
+}
+  
+.list-item-text {
+    display:inline-block; 
+    margin-left: 5%; 
+    width: 80%; 
+    height: fit-content; 
+    margin-top: auto; 
+    margin-bottom: auto;
+}
+  
+.list-group-item {
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+}
+  
+.list-item-status {
+    width: fit-content;
+}
+  
+.list-group {
+    margin: 3rem;
+    margin-left: 0px;
+}
+
+.header-box {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding-right: 45px;
+}
+  
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+  
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.list-group {
+    margin: 3.5rem;
+}
+
+.list-group-item.active {
+    background-color: #FFC312;
+    border-color: #FFC312;
+}

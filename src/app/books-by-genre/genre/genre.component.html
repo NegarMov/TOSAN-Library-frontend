@@ -1,0 +1,22 @@
+<h1>{{genre.name}} Books</h1>
+<hr>
+<p>{{genre.explanation}}</p>
+<br><br>
+<div class="container">
+    <h2 class="top-books">Top {{genre.name}} Books</h2>
+</div>
+<app-book-carousel [books]="getTopBooks()"></app-book-carousel>
+<div class="container">
+    <div class="header-box">
+        <h2>Search books in {{genre.name}} section:</h2>
+        <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search..." [(ngModel)]="bookSearchedToken" [ngModelOptions]="{standalone: true}">
+            <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchBook()">Search</button>
+        </form>
+    </div>
+    <div class="list-group list-group-flush">
+        <div *ngFor="let b of genre.books; let i = index">
+            <app-genre-book-item *ngIf="bookSearchRes[i]" [item]="b"></app-genre-book-item>
+        </div>
+    </div> 
+</div>

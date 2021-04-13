@@ -23,6 +23,8 @@ import { InputTagComponent } from './add-info/input-tag/input-tag.component';
 import { BooksByGenreComponent } from './books-by-genre/books-by-genre.component';
 import { BookCarouselComponent } from './book-carousel/book-carousel.component';
 import { BookCardComponent } from './book-carousel/book-card/book-card.component';
+import { GenreComponent } from './books-by-genre/genre/genre.component';
+import { GenreBookItemComponent } from './books-by-genre/genre-book-item/genre-book-item.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { BookCardComponent } from './book-carousel/book-card/book-card.component
     BooksByGenreComponent,
     BookCarouselComponent,
     BookCardComponent,
+    GenreComponent,
+    GenreBookItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.header-box {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding-right: 45px;
+    margin-top: 70px;
+    margin-bottom: 0px;
+}
+
+.form-control {
+    width: 400px;
+}

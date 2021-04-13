@@ -58,20 +58,7 @@
             </div>
             
             <div class="collapse container" id="poetry-books">
-                <h1>Poetry Books</h1>
-                <hr>
-                <p>Poetry (derived from the Greek poiesis, "making") is a form of literature that uses aesthetic and often rhythmic qualities of language —such as phonaesthetics, sound symbolism, and metre— to evoke meanings in addition to, or in place of, the prosaic ostensible meaning. Poetry has a long history – dating back to prehistoric times with hunting poetry in Africa, and to panegyric and elegiac court poetry of the empires of the Nile, Niger, and Volta River valleys.</p>
-                <br><br>
-                <div class="container">
-                    <h2 class="top-books">Top Poetry Books</h2>
-                </div>
-                <app-book-carousel [books]="getTopPoetryBooks()"></app-book-carousel>
-            </div>
-
-            <div class="collapse container" id="children-books">
-                <h1>Children Books</h1>
-                <hr>
-                <p>Children's literature or juvenile literature includes stories, books, magazines, and poems that are made for children. Modern children's literature is classified in two different ways: genre or the intended age of the reader. Children's literature can be traced to stories such as fairy tales that have only been identified as children’s literature in the eighteenth century, and songs, part of a wider oral tradition, that adults shared with children before publishing existed.</p>
+                <app-genre [genre]="poetry"></app-genre>
             </div>
         </main>
     </div>
