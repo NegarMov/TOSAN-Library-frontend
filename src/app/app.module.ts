@@ -20,6 +20,7 @@ import { BookItemComponent } from './add-info/book-item/book-item.component';
 import { AuthorItemComponent } from './add-info/author-item/author-item.component';
 import { PublisherItemComponent } from './add-info/publisher-item/publisher-item.component';
 import { InputTagComponent } from './add-info/input-tag/input-tag.component';
+import { BooksByGenreComponent } from './books-by-genre/books-by-genre.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { InputTagComponent } from './add-info/input-tag/input-tag.component';
     AuthorItemComponent,
     PublisherItemComponent,
     InputTagComponent,
+    BooksByGenreComponent,
   ],
   imports: [
     BrowserModule,
