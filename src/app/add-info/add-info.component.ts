@@ -32,9 +32,9 @@ export class AddInfoComponent implements OnInit {
   publisherSearchedToken: string = "";
 
   books: Book[] = [
-    { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", tags: ["comdey"], summary: "M",  coverUrl: "" },
-    { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", tags: ["comdey"], summary: "M M",  coverUrl: "" },
-    { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", tags: ["comdey" , "psychology"], summary: "M M M",  coverUrl: "" }
+    { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", rating: 4, tags: ["comdey"], summary: "M",  coverUrl: "" },
+    { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", rating: 3, tags: ["comdey"], summary: "M M",  coverUrl: "" },
+    { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", rating: 5, tags: ["comdey" , "psychology"], summary: "M M M",  coverUrl: "" }
   ];
 
   authors: Author[] = [
@@ -69,6 +69,7 @@ export class AddInfoComponent implements OnInit {
         title : this.newBook.title, 
         author: this.newBook.author, 
         publisher: this.newBook.publisher,
+        rating: 0,
         tags: this.tagInput.tags,
         summary: this.newBook.summary, 
         coverUrl: this.newBook.summary});

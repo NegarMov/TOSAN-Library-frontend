@@ -41,7 +41,7 @@ a:hover > img {
     align-items: center; 
 }
 
-.container {
+.genre-cnt {
     display: flex; 
     justify-content: flex-start; 
     align-items: center; 
@@ -61,9 +61,19 @@ a:hover > img {
 }
 
 h2 {
-    font-weight: 400;
+    font-weight: 400;   
 }
-  
+
+h2.top-books {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+hr {
+    width: 40%;
+    right: 0px;
+    margin-left: 0px;
+}
   
 @media (min-width: 40em) {
     /* Bump up size of carousel content */

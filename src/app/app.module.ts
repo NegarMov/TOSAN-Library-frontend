@@ -21,6 +21,8 @@ import { AuthorItemComponent } from './add-info/author-item/author-item.componen
 import { PublisherItemComponent } from './add-info/publisher-item/publisher-item.component';
 import { InputTagComponent } from './add-info/input-tag/input-tag.component';
 import { BooksByGenreComponent } from './books-by-genre/books-by-genre.component';
+import { BookCarouselComponent } from './book-carousel/book-carousel.component';
+import { BookCardComponent } from './book-carousel/book-card/book-card.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { BooksByGenreComponent } from './books-by-genre/books-by-genre.component
     PublisherItemComponent,
     InputTagComponent,
     BooksByGenreComponent,
+    BookCarouselComponent,
+    BookCardComponent,
   ],
   imports: [
     BrowserModule,

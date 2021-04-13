@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-img-top d-flex justify-content-center">
+        <img class="mx-auto d-block" src="{{book.coverUrl}}" alt="Card image cap">
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">{{book.title}}</h6>
+        <h6 class="card-subtitle" style="font-size: smaller;">{{book.author}}</h6>
+        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 1}"></span>
+        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 2}"></span>
+        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 3}"></span>
+        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 4}"></span>
+        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 5}"></span>
+        <p class="card-text">Summary: {{getSummary()}}</p>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.card {
+    background-color: white; 
+    display: inline-block;
+    border-radius: 5%;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+  
+.card-img-top {
+    height: 180px;
+    padding: 0px; 
+    padding-top: 0.5rem; 
+    margin: 0px;
+}
+  
+.card-text {
+    margin: 0px;
+    font-size: 12px;
+}
+
+.fa-star {
+    font-size: 12px;
+}
+
+.checked {
+    color: #FD4;
+}
