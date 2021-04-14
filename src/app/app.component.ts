@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
+import { HttpService } from './http.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { Test2 } from './tets2';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent{
 
   title = 'Library';
   showNavbar: boolean = true;

@@ -11,7 +11,7 @@ export class AuthorItemComponent implements OnInit {
   @Input() item: Author;
   @Output() deleted = new EventEmitter<Author>();
 
-  editedInfo = { name: "", surname: ""};
+  editedInfo = new Author();
 
   constructor() { }
 
@@ -20,13 +20,11 @@ export class AuthorItemComponent implements OnInit {
   oneditAuthor() {
     if (this.editedInfo.name)
       this.item.name = this.editedInfo.name;
-    if (this.editedInfo.surname)
-      this.item.surname = this.editedInfo.surname;
-    this.editedInfo = { name: "", surname: ""};
+    this.editedInfo = new Author();
   }
 
   ondeleteAuthor() {
-    if (confirm("Are you sure you want to delete this author (" + this.item.name + " " + this.item.surname + ")?")) {
+    if (confirm("Are you sure you want to delete this author (" + this.item.name + ")?")) {
       this.deleted.emit(this.item);
     }
   }

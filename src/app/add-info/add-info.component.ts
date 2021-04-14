@@ -3,6 +3,7 @@ import { Author } from '../_model/author';
 import { Book } from '../_model/book';
 import { InputTagComponent } from './input-tag/input-tag.component';
 import { Publisher } from '../_model/publisher';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-add-info',
@@ -13,48 +14,49 @@ export class AddInfoComponent implements OnInit {
 
   @ViewChild(InputTagComponent) tagInput: InputTagComponent;
 
-  newBook = {title: "", author: "", publisher: "", summary: "", coverUrl: ""};
+  newBook = new Book();
   validBookTitle: boolean = true;
   validBookAuthor: boolean = true;
   validBookPublisher: boolean = true;
   bookSearchRes = new Array();
   bookSearchedToken: string = "";
 
-  newAuthor = {name: "", surname: ""};
+  newAuthor = new Author();
   validAuthorName: boolean = true;
-  validAuthorSurname: boolean = true;
   authorSearchRes = new Array();
   authorSearchedToken: string = "";
 
-  newPublisher = {name: ""};
+  newPublisher = new Publisher();
   validPublisherName: boolean = true;
-  publisherSearchRes = new Array();
+  validPublisherDate: boolean = true;
+  searchedPublishers: Publisher[];
   publisherSearchedToken: string = "";
 
-  books: Book[] = [
-    { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", rating: 4, tags: ["comdey"], summary: "M",  coverUrl: "" },
-    { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", rating: 3, tags: ["comdey"], summary: "M M",  coverUrl: "" },
-    { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", rating: 5, tags: ["comdey" , "psychology"], summary: "M M M",  coverUrl: "" }
-  ];
+  books: Book[] = new Array();
+  // [
+  //   { title: "A neko in garden", author: "Neko Chan", publisher: "TOW", rating: 4, tags: ["comdey"], summary: "M",  coverUrl: "" },
+  //   { title: "Two nekoes in garden", author: "Neko San", publisher: "TOW", rating: 3, tags: ["comdey"], summary: "M M",  coverUrl: "" },
+  //   { title: "Three nekoes in garden", author: "Neko Sama", publisher: "TOW", rating: 5, tags: ["comdey" , "psychology"], summary: "M M M",  coverUrl: "" }
+  // ];
 
   authors: Author[] = [
-    { name: "Maxeu", surname: "Ben"},
-    { name: "Kyu", surname: "Chan"}
+    { name: "Maxeu Ben", bornDate: "1998-03-12", dieDate: null },
+    { name: "Kyu Chan", bornDate: "1873-03-12", dieDate: "2005-12-10" }
   ]
 
-  publishers: Publisher[] = [
-    { name: "TOW" },
-    { name: "ALSH" }
-  ]
+  publishers: Publisher[] = [];
 
-  constructor() {
+  constructor(private httpService: HttpService) {
     // get the actual array of books, authors and publishers from backend and initiate them here.
+    this.httpService.getPublishers().subscribe(data => {
+      this.publishers = data;
+      this.searchedPublishers = data;
+    })
+
     for (var i=0; i<this.books.length; i++)
       this.bookSearchRes[i] = true;
     for (var i=0; i<this.authors.length; i++)
       this.authorSearchRes[i] = true;
-    for (var i=0; i<this.publishers.length; i++)
-      this.publisherSearchRes[i] = true;
   }
 
   ngOnInit(): void {
@@ -65,16 +67,9 @@ export class AddInfoComponent implements OnInit {
     this.validBookAuthor = (this.newBook.author)? true: false;
     this.validBookPublisher = (this.newBook.publisher)? true: false;
     if (this.validBookTitle && this.validBookAuthor && this.validBookPublisher) {
-      this.books.push({
-        title : this.newBook.title, 
-        author: this.newBook.author, 
-        publisher: this.newBook.publisher,
-        rating: 0,
-        tags: this.tagInput.tags,
-        summary: this.newBook.summary, 
-        coverUrl: this.newBook.summary});
+      this.books.push(this.newBook);
       this.bookSearchRes.push(this.newBook.title.toLowerCase().includes(this.bookSearchedToken.toLowerCase()));
-      this.newBook = { title: "", author: "", publisher: "", summary: "", coverUrl: "" };
+      this.newBook = new Book();
       this.tagInput.tags = [];
     }
   }
@@ -85,27 +80,32 @@ export class AddInfoComponent implements OnInit {
 
   onaddAuthor() {
     this.validAuthorName = (this.newAuthor.name)? true: false;
-    this.validAuthorSurname = (this.newAuthor.surname)? true: false;
-    if (this.validAuthorName && this.validAuthorSurname) {
+    if (this.validAuthorName) {
       this.authors.push({
         name: this.newAuthor.name,
-        surname: this.newAuthor.surname
+        bornDate: this.newAuthor.bornDate,
+        dieDate: this.newAuthor.dieDate
       });
-      this.authorSearchRes.push(this.newAuthor.name.toLowerCase().includes(this.authorSearchedToken.toLowerCase()) ||
-        this.newAuthor.surname.toLowerCase().includes(this.authorSearchedToken.toLowerCase()));
-      this.newAuthor = { name: "", surname: "" };
+      this.authorSearchRes.push(this.newAuthor.name.toLowerCase().includes(this.authorSearchedToken.toLowerCase()));
+      this.newAuthor = new Author();
     }
   }
 
   onaddPublisher() {
     this.validPublisherName = (this.newPublisher.name)? true: false;
-    if (this.validPublisherName) {
-      this.publishers.push({
-        name: this.newPublisher.name
-      })
+    this.validPublisherDate = (this.newPublisher.establishedDate)? true: false;
+    if (this.validPublisherName && this.validPublisherDate) {
+      this.httpService.addPublisher(this.newPublisher).subscribe(data => {
+        this.publishers = data;
+        if (!this.publisherSearchedToken)
+          this.searchedPublishers = this.publishers;
+      }, error => {
+        if (error.status === 500)
+          alert("ERROR: Publisher name must be unique");
+      });
+      
+      this.newPublisher = new Publisher();  
     }
-    this.publisherSearchRes.push(this.newPublisher.name.toLowerCase().includes(this.publisherSearchedToken.toLowerCase()));
-    this.newPublisher = { name: "" };
   }
 
   deleteBook(event: Book) {
@@ -130,7 +130,6 @@ export class AddInfoComponent implements OnInit {
     for (var i=0; i<this.publishers.length; i++)                         
       if (this.publishers[i] === event) { 
         this.publishers.splice(i, 1); 
-        this.publisherSearchRes.splice(i, 1);
         break;
       }
   }
@@ -143,13 +142,16 @@ export class AddInfoComponent implements OnInit {
   onsearchAuthor() {
     for (var i=0; i<this.authors.length; i++)
       this.authorSearchRes[i] = 
-        (this.authors[i].name.toLowerCase().includes(this.authorSearchedToken.toLowerCase())) ||
-        (this.authors[i].surname.toLowerCase().includes(this.authorSearchedToken.toLowerCase()));
+        (this.authors[i].name.toLowerCase().includes(this.authorSearchedToken.toLowerCase()));
   }
 
   onsearchPublisher() {
-    for (var i=0; i<this.publishers.length; i++)
-      this.publisherSearchRes[i] = (this.publishers[i].name.toLowerCase().includes(this.publisherSearchedToken.toLowerCase()));
+    this.httpService.searchPublisher(this.publisherSearchedToken).subscribe(data => {
+      if (data)
+        this.searchedPublishers = data;
+      else
+        this.searchedPublishers = this.publishers;
+    });
   }
 
   getAuthors() {

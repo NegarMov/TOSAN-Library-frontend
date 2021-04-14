@@ -28,7 +28,7 @@
                                         <span class="input-group-text">Author</span>
                                     </div>
                                     <select class="form-control select" name="author" [(ngModel)]="newBook.author" required>
-                                        <option *ngFor="let author of getAuthors()">{{author.name + " " + author.surname}}</option>
+                                        <option *ngFor="let author of getAuthors()">{{author.name}}</option>
                                     </select>
                                 </div>
                                 <small *ngIf="!validBookAuthor" class="input-error">*book author is required</small>
@@ -76,14 +76,6 @@
                                 </div>
                                 <small *ngIf="!validAuthorName" class="input-error">*author name is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Surname</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="surname" placeholder="Author Surname" [(ngModel)]="newAuthor.surname" required>
-                                </div>
-                                <small *ngIf="!validAuthorSurname" class="input-error">*author last name is required</small>
-
                                 <div class="form-group">
                                     <input type="submit" value="Add Author" class="btn float-right add-btn" (click)="onaddAuthor()">
                                 </div>
@@ -100,6 +92,14 @@
                                     <input type="text" class="form-control" name="name" placeholder="Publisher Name" [(ngModel)]="newPublisher.name" required>
                                 </div>
                                 <small *ngIf="!validPublisherName" class="input-error">*publisher name is required</small>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Foundation</span>
+                                    </div>
+                                    <input type="date" class="form-control" [value]="newPublisher.establishedDate | date:'yyyy-MM-dd'" (input)="newPublisher.establishedDate=$event.target.value">
+                                </div>
+                                <small *ngIf="!validPublisherDate" class="input-error">*please select a date</small>
 
                                 <div class="form-group">
                                     <input type="submit" value="Add Publisher" class="btn float-right add-btn" (click)="onaddPublisher()">
@@ -149,8 +149,8 @@
                     </form>
                 </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let p of publishers; let i = index">
-                        <app-publisher-item *ngIf="publisherSearchRes[i]" [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
+                    <div *ngFor="let p of searchedPublishers; let i = index">
+                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
                     </div>
                 </div>
             </div>

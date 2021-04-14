@@ -1,3 +1,4 @@
-export interface Publisher {
+export class Publisher {
     name: string;
+    establishedDate: string;
 }
