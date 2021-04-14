@@ -1,16 +1,16 @@
 <a class="top-content" href="#">
     <div class="container-fluid">
-        <div id="carousel-example" class="slide carousel " data-ride="carousel">
+        <div id="{{id}}" class="slide carousel " data-ride="carousel">
             <div class="carousel-inner row w-100 mx-auto" role="listbox">
                 <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let book of books; let i = index" [ngClass]="{'active': i == 0}">
                     <app-book-card [book]="book"></app-book-card>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#{{id}}" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#{{id}}" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>

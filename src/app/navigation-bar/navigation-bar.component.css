@@ -1,7 +1,3 @@
-body {
-    color: #5a5a5a;
-}
-  
 .dropdown-menu {
     opacity: 90%;
 }
@@ -24,13 +20,6 @@ body {
     font-size: 30px;
     margin-top: -10px;
     margin-bottom: -10px;
-}
-  
-.btn-yellow{
-    font-size: 15px;
-    margin-left: 5px;
-    color: black;
-    background-color: #FFC312;
 }
   
 .search-btn:hover {

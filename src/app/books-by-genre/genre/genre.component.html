@@ -5,7 +5,7 @@
 <div class="container">
     <h2 class="top-books">Top {{genre.name}} Books</h2>
 </div>
-<app-book-carousel [books]="getTopBooks()"></app-book-carousel>
+<app-book-carousel [books]="getTopBooks()" [id]="genre.name"></app-book-carousel>
 <div class="container">
     <div class="header-box">
         <h2>Search books in {{genre.name}} section:</h2>

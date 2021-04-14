@@ -5,6 +5,7 @@ import { BookInfoComponent } from './book-info/book-info.component';
 import { BooksByGenreComponent } from './books-by-genre/books-by-genre.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RequestsComponent } from './requests/requests.component';
 
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'requests', component: RequestsComponent },
   { path: 'book/:bookTitle', component: BookInfoComponent },
   { path: 'edit-info', component: AddInfoComponent },
-  { path: 'books-by-genre', component: BooksByGenreComponent }
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({

@@ -25,6 +25,7 @@ import { BookCarouselComponent } from './book-carousel/book-carousel.component';
 import { BookCardComponent } from './book-carousel/book-card/book-card.component';
 import { GenreComponent } from './books-by-genre/genre/genre.component';
 import { GenreBookItemComponent } from './books-by-genre/genre-book-item/genre-book-item.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { GenreBookItemComponent } from './books-by-genre/genre-book-item/genre-b
     BookCardComponent,
     GenreComponent,
     GenreBookItemComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

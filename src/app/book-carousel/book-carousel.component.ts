@@ -9,6 +9,7 @@ import { Book } from '../_model/book';
 export class BookCarouselComponent implements OnInit {
 
   @Input() books: Book[];
+  @Input() id: string;
 
   constructor() { }
 
