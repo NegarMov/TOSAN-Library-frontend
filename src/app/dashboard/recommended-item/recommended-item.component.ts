@@ -11,30 +11,19 @@ export class RecommendedItemComponent implements OnInit {
   @Input() selected: string;
   @Input() item: RecommendedItem;
 
-  bookTitle: string;
-  bookAuthor: string;
-  bookPublisher: string;
-  status: string;
-  editDate: Date;
-
   getDate() {
-    return ((this.status == "Read Later")? "saved on: " : "rejected on: ") + this.editDate.toDateString();
+    return ((this.item.status == "Read Later")? "saved on: " : "rejected on: ") + this.item.editDate.toDateString();
   }
 
   show() {
-    return (this.selected=="saved" && this.status=="Read Later") ||
-    (this.selected=="rejected" && this.status=="Rejected") ||
+    return (this.selected=="saved" && this.item.status=="Read Later") ||
+    (this.selected=="rejected" && this.item.status=="Rejected") ||
     (this.selected=="all");
   }
 
   constructor() { }
 
   ngOnInit(): void {
-    this.bookTitle = this.item.book.title;
-    this.bookAuthor = this.item.book.author;
-    this.bookPublisher = this.item.book.publisher;
-    this.status = this.item.status;
-    this.editDate = this.item.editDate;
   }
 
 }

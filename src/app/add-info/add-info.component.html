@@ -28,7 +28,7 @@
                                         <span class="input-group-text">Author</span>
                                     </div>
                                     <select class="form-control select" name="author" [(ngModel)]="newBook.author" required>
-                                        <option *ngFor="let author of getAuthors()">{{author.name}}</option>
+                                        <option *ngFor="let author of getAuthors()" [ngValue]="author">{{author.name}}</option>
                                     </select>
                                 </div>
                                 <small *ngIf="!validBookAuthor" class="input-error">*book author is required</small>
@@ -38,10 +38,18 @@
                                         <span class="input-group-text">Publisher</span>
                                     </div>
                                     <select class="form-control select" name="publisher" data-live-search="true" [(ngModel)]="newBook.publisher" required>
-                                        <option *ngFor="let publisher of getPublishers()">{{publisher.name}}</option>
+                                        <option *ngFor="let publisher of getPublishers()" [ngValue]="publisher">{{publisher.name}}</option>
                                     </select>
                                 </div>
                                 <small *ngIf="!validBookPublisher" class="input-error">*book publisher is required</small>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Published</span>
+                                    </div>
+                                    <input type="number" max="2021" min="1600" step="1" class="form-control" name="publishing-year" [(ngModel)]="newBook.publicationDate" required>
+                                </div>
+                                <small *ngIf="!validBookPublishingYear" class="input-error">*book publishing year is required</small>
 
                                 <app-input-tag></app-input-tag>
 
@@ -75,6 +83,22 @@
                                     <input type="text" class="form-control" name="name" placeholder="Author Name" [(ngModel)]="newAuthor.name" required>
                                 </div>
                                 <small *ngIf="!validAuthorName" class="input-error">*author name is required</small>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Birth Date</span>
+                                    </div>
+                                    <input type="date" class="form-control" [value]="newAuthor.bornDate | date:'yyyy-MM-dd'" (input)="newAuthor.bornDate=$event.target.value">
+                                </div>
+                                <small *ngIf="!validAuthorBirthDate" class="input-error">*please select a date</small>
+                                
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Death Date</span>
+                                    </div>
+                                    <input type="date" class="form-control" [value]="newAuthor.dieDate | date:'yyyy-MM-dd'" (input)="newAuthor.dieDate=$event.target.value">
+                                </div>
+                                <small class="input-error text-muted">*if you don't choose a death date that means the author is still alive</small>
 
                                 <div class="form-group">
                                     <input type="submit" value="Add Author" class="btn float-right add-btn" (click)="onaddAuthor()">
@@ -119,8 +143,8 @@
                     </form>
                 </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let b of books; let i = index">
-                        <app-book-item *ngIf="bookSearchRes[i]" [item]="b" (deleted)="deleteBook($event)"></app-book-item>
+                    <div *ngFor="let b of searchedBooks">
+                        <app-book-item [item]="b" (deleted)="deleteBook($event)"></app-book-item>
                     </div>
                 </div>
             </div>
@@ -134,8 +158,8 @@
                     </form>
                 </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let a of authors; let i = index">
-                        <app-author-item *ngIf="authorSearchRes[i]" [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
+                    <div *ngFor="let a of searchedAuthors">
+                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
                     </div>
                 </div>
             </div>
@@ -149,7 +173,7 @@
                     </form>
                 </div>
                 <div class="list-group list-group-flush">
-                    <div *ngFor="let p of searchedPublishers; let i = index">
+                    <div *ngFor="let p of searchedPublishers">
                         <app-publisher-item [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
                     </div>
                 </div>

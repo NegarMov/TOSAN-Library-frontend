@@ -14,7 +14,7 @@ export class BookItemComponent implements OnInit {
   
   @ViewChild(InputTagComponent) tagInput: InputTagComponent;
 
-  editedInfo = { title: "", author: "", publisher: "", summary: "", coverUrl: "" };
+  editedInfo = new Book();
 
   constructor() { }
 

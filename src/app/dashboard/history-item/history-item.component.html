@@ -1,13 +1,13 @@
-<a class="list-group-item list-group-item-action" routerLink="/book/{{bookTitle}}" target="_blank">
+<a class="list-group-item list-group-item-action" routerLink="/book/{{item.book.title}}" target="_blank">
     <div style="display: inline-block;">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="75" height="75" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">75x75</text></svg>
     </div>
     <div class="list-item-text">
         <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{bookTitle}}</h5>
-            <small>{{startDate.toLocaleString()}}~{{endDate.toLocaleString()}}</small>
+            <h5 class="mb-1">{{item.book.title}}</h5>
+            <small>{{item.startDate.toLocaleString()}}~{{item.endDate.toLocaleString()}}</small>
         </div>
-        <h6 class="text-muted">By: {{bookAuthor}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{bookPublisher}}</h6>
+        <h6 class="text-muted">By: {{item.book.author}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.book.publisher}}</h6>
     </div>
 </a>

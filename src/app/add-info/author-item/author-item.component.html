@@ -2,6 +2,7 @@
     <div class="d-flex w-100 justify-content-between">
         <a routerLink="/author/{{item.name}}" target="_blank">
             <h5 class="mb-1">{{item.name}}</h5>
+            <h6 class="text-muted">{{item.bornDate}}~{{(item.dieDate)? item.dieDate : "today"}}</h6>
         </a>
         <div>
             <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Author</button>

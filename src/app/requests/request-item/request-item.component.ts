@@ -10,22 +10,9 @@ export class RequestItemComponent implements OnInit {
 
   @Input() item: RequestItem;
 
-  bookTitle: string;
-  bookAuthor: string;
-  bookPublisher: string;
-  startDate: Date;
-  bookSummary: string;
-  status: string;
-
   constructor() { }
 
   ngOnInit(): void {
-    this.bookTitle = this.item.book.title;
-    this.bookAuthor = this.item.book.author;
-    this.bookPublisher = this.item.book.publisher;
-    this.bookSummary = this.item.book.summary;
-    this.startDate = this.item.startDate;
-    this.status = this.item.status;
   }
 
 }

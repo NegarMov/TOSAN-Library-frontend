@@ -4,13 +4,13 @@
     </div>
     <div class="list-group-item-text">
         <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{bookTitle}}</h5>
-            <small>{{startDate.toLocaleString()}}</small>
+            <h5 class="mb-1">{{item.book.title}}</h5>
+            <small>{{item.startDate.toLocaleString()}}</small>
         </div>
-        <h6 class="text-muted">By: {{bookAuthor}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{bookPublisher}}</h6>
-        <p class="mb-1">{{bookSummary}}</p>
+        <h6 class="text-muted">By: {{item.book.author}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.book.publisher}}</h6>
+        <p class="mb-1">{{item.book.summary}}</p>
         <small>Status: </small>
-        <span class="badge badge-pill" [ngClass]="{'badge-success': status=='Accepted', 'badge-danger': status=='Rejected', 'badge-info': status=='Pending'}">{{status}}</span>
+        <span class="badge badge-pill" [ngClass]="{'badge-success': item.status=='Accepted', 'badge-danger': item.status=='Rejected', 'badge-info': item.status=='Pending'}">{{item.status}}</span>
     </div>
 </a>

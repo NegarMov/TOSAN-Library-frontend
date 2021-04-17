@@ -10,8 +10,8 @@
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
             </div>
         </div>
-        <h6 class="text-muted">By: {{item.author}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.publisher}}</h6>
+        <h6 class="text-muted">By: {{item.author.name}}</h6>
+        <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.publisher.name}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">tags:
             <div style="display: inline-block;" *ngFor="let t of item.tags">
                 <span style="margin: 1px;" class="badge badge-pill badge-warning">{{t}}</span>
