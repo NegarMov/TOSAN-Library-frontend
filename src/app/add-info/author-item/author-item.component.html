@@ -5,13 +5,13 @@
             <h6 class="text-muted">{{item.bornDate}}~{{(item.dieDate)? item.dieDate : "today"}}</h6>
         </a>
         <div>
-            <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Author</button>
+            <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#author-' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Author</button>
             <button class="btn btn-secondary" (click)="ondeleteAuthor()"><i class="fa fa-trash fa-fw"></i>Delete Author</button>
         </div>
     </div>
 </a>
 
-<div class="modal fade" id="{{item.name}}" tabindex="-1">
+<div class="modal fade" id="author-{{item.name}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -26,10 +26,22 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Name</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="item.name" name="name" [(ngModel)]="editedInfo.name" required>
+                    <input type="text" class="form-control" [placeholder]="item.name" name="name" [(ngModel)]="editedInfo.name">
                 </div>
 
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Birth Date</span>
+                    </div>
+                    <input type="date" class="form-control" [value]="item.bornDate | date:'yyyy-MM-dd'" (input)="editedInfo.bornDate=$event.target.value">
+                </div>
                 
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Death Date</span>
+                    </div>
+                    <input type="date" class="form-control" [value]="item.dieDate | date:'yyyy-MM-dd'" (input)="editedInfo.dieDate=$event.target.value">
+                </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

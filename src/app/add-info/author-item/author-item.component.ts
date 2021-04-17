@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpService } from 'src/app/http.service';
 import { Author } from '../../_model/author';
 
 @Component({
@@ -10,17 +11,27 @@ export class AuthorItemComponent implements OnInit {
 
   @Input() item: Author;
   @Output() deleted = new EventEmitter<Author>();
+  @Output() edited = new EventEmitter();
 
   editedInfo = new Author();
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void { }
 
   oneditAuthor() {
-    if (this.editedInfo.name)
-      this.item.name = this.editedInfo.name;
-    this.editedInfo = new Author();
+    if (!this.editedInfo.name)
+      this.editedInfo.name = this.item.name;
+    if (!this.editedInfo.bornDate)
+      this.editedInfo.bornDate = this.item.bornDate;
+    this.httpService.updateAuthor(this.item.name, this.editedInfo).subscribe(data => {
+      this.item = data;
+      this.edited.emit();
+      this.editedInfo = new Author();
+    }, error => {
+      if (error.status === 500)
+        alert("ERROR: Author name must be unique");
+    });
   }
 
   ondeleteAuthor() {

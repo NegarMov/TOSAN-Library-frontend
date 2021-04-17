@@ -5,13 +5,13 @@
           <h6 class="text-muted">Founded on: {{item.establishedDate}}</h6>
       </a>
       <div>
-          <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Publisher</button>
+          <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#publisher-' + item.name"><i class="fa fa-edit fa-fw"></i>Edit Publisher</button>
           <button class="btn btn-secondary" (click)="ondeletePublisher()"><i class="fa fa-trash fa-fw"></i>Delete Publisher</button>
       </div>
   </div>
 </a>
 
-<div class="modal fade" id="{{item.name}}" tabindex="-1">
+<div class="modal fade" id="publisher-{{item.name}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -27,6 +27,13 @@
                         <span class="input-group-text">Name</span>
                     </div>
                     <input type="text" class="form-control" [placeholder]="item.name" name="name" [(ngModel)]="editedInfo.name" required>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Foundation</span>
+                  </div>
+                    <input type="date" class="form-control" [value]="item.establishedDate | date:'yyyy-MM-dd'" (input)="editedInfo.establishedDate=$event.target.value">
                 </div>
                 
                 <div class="modal-footer">

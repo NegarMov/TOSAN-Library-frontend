@@ -58,6 +58,17 @@ export class AddInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //####### UPDATE METHODS #######/
+  updateBooks() {
+    this.httpService.getBooks().subscribe(data => {
+      this.books = data;
+      this.bookSearchedToken = "";
+      this.searchedBooks = data;
+    });
+  }
+
+
+  //####### ADD METHODS #######/
   onaddBook() {
     this.validBookTitle = (this.newBook.title)? true: false;
     this.validBookAuthor = (this.newBook.author)? true: false;
@@ -116,6 +127,7 @@ export class AddInfoComponent implements OnInit {
     }
   }
 
+  //####### DELETE METHODS #######/
   deleteBook(event: Book) {
     for (var i=0; i<this.books.length; i++)                         
       if (this.books[i] === event) { 
@@ -125,21 +137,24 @@ export class AddInfoComponent implements OnInit {
   }
 
   deleteAuthor(event: Author) {
-    for (var i=0; i<this.authors.length; i++)                         
-      if (this.authors[i] === event) { 
-        this.authors.splice(i, 1);
-        break;
-      }
+    this.httpService.deleteAuthor(event.name).subscribe(data => {
+      this.authors = data;
+      if (!this.authorSearchedToken)
+        this.searchedAuthors = this.authors;
+      this.updateBooks();
+    });
   }
 
   deletePublisher(event: Publisher) {
-    for (var i=0; i<this.publishers.length; i++)                         
-      if (this.publishers[i] === event) { 
-        this.publishers.splice(i, 1); 
-        break;
-      }
+    this.httpService.deletePublisher(event.name).subscribe(data => {
+      this.publishers = data;
+      if (!this.publisherSearchedToken)
+        this.searchedPublishers = this.publishers;
+      this.updateBooks();
+    });
   }
 
+  //####### SEARCH METHODS #######/
   onsearchBook() {
     this.httpService.searchBook(this.bookSearchedToken).subscribe(data => {
       if (data)
@@ -167,6 +182,16 @@ export class AddInfoComponent implements OnInit {
     });
   }
 
+  //####### EDIT METHODS #######/
+  editPublisher() {
+    this.updateBooks();
+  }
+
+  editAuthor() {
+    this.updateBooks();
+  }
+
+  //####### GET METHODS #######/
   getAuthors() {
     return this.authors.sort((a, b) => a.name.localeCompare(b.name));
   }

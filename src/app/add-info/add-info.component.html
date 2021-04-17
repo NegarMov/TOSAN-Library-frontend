@@ -159,7 +159,7 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <div *ngFor="let a of searchedAuthors">
-                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)"></app-author-item>
+                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)" (edited)="editPublisher()"></app-author-item>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <div *ngFor="let p of searchedPublishers">
-                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)"></app-publisher-item>
+                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)" (edited)="editPublisher()"></app-publisher-item>
                     </div>
                 </div>
             </div>

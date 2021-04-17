@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpService } from 'src/app/http.service';
 import { Publisher } from '../../_model/publisher';
 
 @Component({
@@ -10,17 +11,27 @@ export class PublisherItemComponent implements OnInit {
 
   @Input() item: Publisher;
   @Output() deleted = new EventEmitter<Publisher>();
+  @Output() edited = new EventEmitter();
 
-  editedInfo = { name: ""};
+  editedInfo = new Publisher();
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void { }
 
   oneditPublisher() {
-    if (this.editedInfo.name)
-      this.item.name = this.editedInfo.name;
-    this.editedInfo = { name: ""};
+    if (!this.editedInfo.name)
+      this.editedInfo.name = this.item.name;
+    if (!this.editedInfo.establishedDate)
+      this.editedInfo.establishedDate = this.item.establishedDate;
+    this.httpService.updatePublisher(this.item.name, this.editedInfo).subscribe(data => {
+      this.item = data;
+      this.edited.emit();
+      this.editedInfo = new Publisher();
+    }, error => {
+      if (error.status === 500)
+        alert("ERROR: Publisher name must be unique");
+    });
   }
 
   ondeletePublisher() {

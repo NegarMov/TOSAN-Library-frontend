@@ -48,6 +48,14 @@ export class HttpService {
     return this.http.post<Publisher[]>(this.serverIP + 'publisher/search/' + searchedToken, "");
   }
 
+  public updatePublisher(oldName: string, newPublisher: Publisher) {
+    return this.http.post<Publisher>(this.serverIP + 'publisher/edit/' + oldName, newPublisher);
+  }
+
+  public deletePublisher(publisher: string) {
+    return this.http.delete<Publisher[]>(this.serverIP + 'publisher/delete/' + publisher);
+  }
+
   public getAuthors() : Observable<Author[]> {
     return this.http.post<Author[]>(this.getAuthorsUrl, "");
   }
@@ -58,6 +66,14 @@ export class HttpService {
 
   public searchAuthor(searchedToken: string) : Observable<Author[]> {
     return this.http.post<Author[]>(this.serverIP + 'author/search/' + searchedToken, "");
+  }
+
+  public deleteAuthor(author: string) {
+    return this.http.delete<Author[]>(this.serverIP + 'author/delete/' + author);
+  }
+
+  public updateAuthor(oldName: string, newAuthor: Author) {
+    return this.http.post<Author>(this.serverIP + 'author/edit/' + oldName, newAuthor);
   }
 
   public getBooks() : Observable<Book[]> {
