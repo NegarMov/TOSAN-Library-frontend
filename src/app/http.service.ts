@@ -23,6 +23,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) {
     this.serverIP = 'http://192.168.76.42:8080/';
+    
     this.addPublisherUrl = this.serverIP + 'publisher/addPublisher';
     this.getPublishersUrl = this.serverIP + 'publisher/allPublishers';
 
@@ -31,6 +32,10 @@ export class HttpService {
 
     this.getBooksUrl = this.serverIP + 'book/allBooks';
     this.addBookUrl = this.serverIP + 'book/addBook';
+  }
+
+  public getBookByName(bookName: string) {
+    return this.http.get<Book>(this.serverIP + "book/" + bookName);
   }
 
   //####### PUBLISHER METHODS #######/

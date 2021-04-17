@@ -3,23 +3,23 @@
         <main role="main">
             <div class="row featurette" style="margin: 30px;">
                 <div class="col-md-7">
-                    <h1 class="featurette-heading">{{bookTitle}}</h1>
-                    <h3 class="text-muted">By: {{bookAuthor}}</h3>
-                    <h5 class="text-muted">Publisher: {{bookPublisher}}</h5>
+                    <h1 class="featurette-heading">{{book.title}}</h1>
+                    <h3 class="text-muted">By: {{book.author.name}}</h3>
+                    <h5 class="text-muted">Publisher: {{book.publisher.name}}</h5>
                     <div>
-                        <span class="fa fa-star" [ngClass]="{'checked' : rating >= 1}"></span>
-                        <span class="fa fa-star" [ngClass]="{'checked' : rating >= 2}"></span>
-                        <span class="fa fa-star" [ngClass]="{'checked' : rating >= 3}"></span>
-                        <span class="fa fa-star" [ngClass]="{'checked' : rating >= 4}"></span>
-                        <span class="fa fa-star" [ngClass]="{'checked' : rating >= 5}"></span>
+                        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 1}"></span>
+                        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 2}"></span>
+                        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 3}"></span>
+                        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 4}"></span>
+                        <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 5}"></span>
                     </div>
                     <br>
                     <h6 class="text-muted">tags:
-                        <div style="display: inline-block;" *ngFor="let t of tags">
+                        <div style="display: inline-block;" *ngFor="let t of book.tags">
                             <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{t}}</span>
                         </div>
                     </h6>
-                    <p class="lead">{{bookSummary}}</p>
+                    <p class="lead">Summary: {{book.summary}}</p>
                     <div *ngIf="access == 'user'" >
                         <!--====== Buttons =======-->
                         <button class="btn btn-secondary" (click)="onclickRequest()" [disabled]="requestSent">
@@ -56,8 +56,8 @@
                     <div *ngIf="access == 'admin'">
                         <br>
                         <h5>Status:</h5>
-                        <h6 *ngIf="lentTo" >Borrowed by <a href="#">{{lentTo}}</a> from {{startDate.toLocaleString()}}. The due date is {{dueDate.toLocaleString()}}</h6>
-                        <h6 *ngIf="!lentTo">Available</h6>
+                        <h6 *ngIf="book.isAvailable" >Borrowed by <a href="#">{{book.user}}</a> from {{book.startDate}}. The due date is {{book.finishDate}}</h6>
+                        <h6 *ngIf="!book.isAvailable">Available</h6>
                     </div>
                 </div>
                 <div class="col-md-5">

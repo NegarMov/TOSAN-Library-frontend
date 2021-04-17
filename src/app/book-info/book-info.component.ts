@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { HttpService } from '../http.service';
+import { Book } from '../_model/book';
 
 @Component({
   selector: 'app-book-info',
@@ -9,18 +12,20 @@ export class BookInfoComponent implements OnInit {
 
   access: string = "admin"; //change later
 
-  bookTitle: string = "First Book";
-  bookAuthor: string = "Maxeu";
-  bookPublisher: string = "The Other";
-  bookSummary: string = "This is a book about books? This author writes about books, in fact writes everything except the book itself! You know, it gets a little bit recursive if she did the thing. Wanna be on this journey with her? Read this book!";
-  rating: number = 3;
-  tags = ["comedy", "social", "sci-fi"];
+  book = new Book();
+
   saveMessage: string = "Add to read later";
   requestSent: boolean = false;
   userRating: number = 0; //for user
-  lentTo: string = "@username"; //for admin (in case it's empty, the book is available)
-  startDate: Date = new Date(2020, 7, 12, 13, 54, 7); //for admin
-  dueDate: Date = new Date(2020, 7, 19, 13, 54, 7); //for admin
+
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
+    const title = this.route.snapshot.paramMap.get('title');
+    this.httpService.getBookByName(title).subscribe(data => {
+      this.book = data;
+    });
+  }
 
   onclickSave() {
     if (this.saveMessage == "Add to read later") {
@@ -51,10 +56,5 @@ export class BookInfoComponent implements OnInit {
   onrating2() {this.userRating = 2;}
 
   onrating1() {this.userRating = 1;}  
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

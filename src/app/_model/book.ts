@@ -1,5 +1,6 @@
 import { Author } from "./author";
 import { Publisher } from "./publisher";
+import { User } from "./user";
 
 export class Book {
     title: string;
@@ -11,4 +12,8 @@ export class Book {
     tags: string[];
     summary: string;
     coverUrl: string;
+    isAvailable: boolean;
+    startDate: string;
+    finishDate: string;
+    user: User;
 }

@@ -4,7 +4,7 @@
     </div>
     <div class="list-item-text">
         <div class="d-flex w-100 justify-content-between">
-            <a routerLink="/book/{{item.title}}" target="_blank"><h5 class="mb-1">{{item.title}}</h5></a>
+            <a [routerLink]="['/book', item.title]" target="_blank"><h5 class="mb-1">{{item.title}}</h5></a>
             <div>
                 <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#book-' + item.title" (click)="onstartEdit()"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
