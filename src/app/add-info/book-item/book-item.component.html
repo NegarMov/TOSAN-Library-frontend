@@ -36,21 +36,32 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Title</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="item.title" name="title" [(ngModel)]="editedInfo.title" required>
+                    <input type="text" class="form-control" [placeholder]="item.title" name="title" [(ngModel)]="editedInfo.title">
                 </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Author</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="item.author" name="author" [(ngModel)]="editedInfo.author" required>
+                    <select class="form-control select" name="author" [(ngModel)]="editedInfo.author">
+                        <option *ngFor="let author of authors" [ngValue]="author">{{author.name}}</option>
+                    </select>
                 </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Publisher</span>
                     </div>
-                    <input type="text" class="form-control" [placeholder]="item.publisher" name="publisher" [(ngModel)]="editedInfo.publisher" required>
+                    <select class="form-control select" name="publisher" [(ngModel)]="editedInfo.publisher">
+                        <option *ngFor="let publisher of publishers" [ngValue]="publisher">{{publisher.name}}</option>
+                    </select>
+                </div>
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Published</span>
+                    </div>
+                    <input type="number" max="2021" min="1600" step="1" [placeholder]="item.publicationDate" class="form-control" name="publishing-year" [(ngModel)]="editedInfo.publicationDate">
                 </div>
 
                 <app-input-tag></app-input-tag>
@@ -59,7 +70,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Summary</span>
                     </div>
-                    <textarea class="form-control" name="summary" rows="3" [placeholder]="item.summary" [(ngModel)]="editedInfo.summary"></textarea>
+                    <textarea class="form-control" name="summary" rows="3" [placeholder]="(item.summary)? item.summary : 'add summary here...'" [(ngModel)]="editedInfo.summary"></textarea>
                 </div>
 
                 <div class="form-group">

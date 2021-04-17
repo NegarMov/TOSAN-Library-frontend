@@ -144,7 +144,7 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <div *ngFor="let b of searchedBooks">
-                        <app-book-item [item]="b" (deleted)="deleteBook($event)"></app-book-item>
+                        <app-book-item [item]="b" [authors]="getAuthors()" [publishers]="getPublishers()" (deleted)="deleteBook($event)"></app-book-item>
                     </div>
                 </div>
             </div>

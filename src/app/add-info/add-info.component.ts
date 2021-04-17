@@ -129,11 +129,11 @@ export class AddInfoComponent implements OnInit {
 
   //####### DELETE METHODS #######/
   deleteBook(event: Book) {
-    for (var i=0; i<this.books.length; i++)                         
-      if (this.books[i] === event) { 
-        this.books.splice(i, 1);
-        break;
-      }
+    this.httpService.deleteBook(event.title).subscribe(data => {
+      this.books = data;
+      if (!this.bookSearchedToken)
+        this.searchedBooks = this.books;
+    });
   }
 
   deleteAuthor(event: Author) {

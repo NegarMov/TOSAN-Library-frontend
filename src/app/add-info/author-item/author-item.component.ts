@@ -24,6 +24,8 @@ export class AuthorItemComponent implements OnInit {
       this.editedInfo.name = this.item.name;
     if (!this.editedInfo.bornDate)
       this.editedInfo.bornDate = this.item.bornDate;
+    if (!this.editedInfo.dieDate)
+      this.editedInfo.dieDate = this.item.dieDate;
     this.httpService.updateAuthor(this.item.name, this.editedInfo).subscribe(data => {
       this.item = data;
       this.edited.emit();

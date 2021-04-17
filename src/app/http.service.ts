@@ -10,9 +10,6 @@ import { Book } from './_model/book';
 })
 export class HttpService {
 
-  private url: string;
-  private addUrl: string;
-
   private serverIP: string;
 
   private addPublisherUrl: string;
@@ -36,6 +33,7 @@ export class HttpService {
     this.addBookUrl = this.serverIP + 'book/addBook';
   }
 
+  //####### PUBLISHER METHODS #######/
   public getPublishers() : Observable<Publisher[]> {
     return this.http.post<Publisher[]>(this.getPublishersUrl, "");
   }
@@ -56,6 +54,7 @@ export class HttpService {
     return this.http.delete<Publisher[]>(this.serverIP + 'publisher/delete/' + publisher);
   }
 
+  //####### AUTHOR METHODS #######/
   public getAuthors() : Observable<Author[]> {
     return this.http.post<Author[]>(this.getAuthorsUrl, "");
   }
@@ -76,6 +75,7 @@ export class HttpService {
     return this.http.post<Author>(this.serverIP + 'author/edit/' + oldName, newAuthor);
   }
 
+  //####### BOOK METHODS #######/
   public getBooks() : Observable<Book[]> {
     return this.http.post<Book[]>(this.getBooksUrl, "");
   }
@@ -86,6 +86,14 @@ export class HttpService {
 
   public searchBook(searchedToken: string) : Observable<Book[]> {
     return this.http.post<Book[]>(this.serverIP + 'book/search/' + searchedToken, "");
+  }
+
+  public deleteBook(book: string) {
+    return this.http.delete<Book[]>(this.serverIP + 'book/delete/' + book);
+  }
+
+  public updateBook(oldName: string, newBook: Book) {
+    return this.http.post<Book>(this.serverIP + 'book/edit/' + oldName, newBook);
   }
 
 }
