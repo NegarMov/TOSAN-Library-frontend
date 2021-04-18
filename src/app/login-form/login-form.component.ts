@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,14 +15,26 @@ export class LoginFormComponent implements OnInit {
   validUsername: boolean = true;
   validPassword: boolean = true;
 
+  constructor(private httpService: HttpService, private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
   onsubmit() {
     this.validUsername = (this.credentials.username)? true : false;
     this.validPassword = (this.credentials.password)? true : false;
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
+    if (this.validPassword && this.validUsername) {
+      this.httpService.authenticateUser(this.credentials.username, this.credentials.password).subscribe(data => {
+        if (data != -1) {
+          localStorage.setItem('userID', data + "");
+          this.router.navigate(['/']);
+        }
+        else
+          alert("ERROR: No username with the given credentials was found.");
+      }, error => {
+        alert("ERROR: An unexpected error occured, please try again.");
+      })
+    }
   }
 
 }

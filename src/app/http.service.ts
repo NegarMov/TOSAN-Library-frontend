@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Publisher } from './_model/publisher';
 import { Author } from './_model/author';
 import { Book } from './_model/book';
+import { User } from './_model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,8 @@ export class HttpService {
   private getBooksUrl: string;
   private addBookUrl: string;
 
+  private userSignupUrl: string;
+
   constructor(private http: HttpClient) {
     this.serverIP = 'http://192.168.76.42:8080/';
     
@@ -32,6 +35,16 @@ export class HttpService {
 
     this.getBooksUrl = this.serverIP + 'book/allBooks';
     this.addBookUrl = this.serverIP + 'book/addBook';
+
+    this.userSignupUrl = this.serverIP + 'user/addUser';
+  }
+
+  public addUser(user: User) {
+    return this.http.post(this.userSignupUrl, user);
+  } 
+
+  public authenticateUser(username: string, password: string) {
+    return this.http.post<number>(this.serverIP + "login/" + username + "/" + password, "");
   }
 
   public getBookByName(bookName: string) {

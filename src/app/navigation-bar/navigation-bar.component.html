@@ -40,15 +40,24 @@
                     <button class="btn btn-yellow my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
-                <span class="nav-item dropdown">
+                <span class="nav-item dropdown" *ngIf="isLogedin()">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
                         <i class="fa fa-user-circle-o fa-fw"></i> Profile</a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a *ngIf="access === 'user'" class="dropdown-item" routerLink="/dashboard"><i class="fa fa-drivers-license fa-fw"></i> Dashboard</a></li>
                         <li><a *ngIf="access === 'admin'" class="dropdown-item" routerLink="/edit-info"><i class="fa fa-edit fa-fw"></i> Dashboard</a></li>
                         <li><a class="dropdown-item" routerLink="/requests"><i class="fa fa-envelope fa-fw"></i> Requests <span class="badge badge-pill badge-warning">{{newRequests}}</span></a></li>
-                        <li><a class="dropdown-item" routerLink="/change-password"><i class="fa fa-unlock-alt fa-fw"></i> Change Password</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                        <!-- <li><a class="dropdown-item" routerLink="/change-password"><i class="fa fa-unlock-alt fa-fw"></i> Change Password</a></li> -->
+                        <li><a class="dropdown-item" (click)="onlogout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </span>
+
+                <span class="nav-item dropdown" *ngIf="!isLogedin()">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
+                        <i class="fa fa-user-circle-o fa-fw"></i> Login | Register</a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" routerLink="/login"><i class="fa fa-sign-in fa-fw"></i> Sign in</a></li>
+                        <li><a class="dropdown-item" routerLink="/signup"><i class="fa fa-user-plus fa-fw"></i> Sign up</a></li>
                     </ul>
                 </span>
             </div>

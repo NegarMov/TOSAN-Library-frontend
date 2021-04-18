@@ -7,16 +7,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RequestsComponent } from './requests/requests.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
-  { path: 'signup', component: LoginFormComponent },
+  { path: 'signup', component: SignupFormComponent },
   { path: 'change-password', component: ChangePasswordFormComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'requests', component: RequestsComponent },
   { path: 'book/:title', component: BookInfoComponent },
   { path: 'edit-info', component: AddInfoComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: ''}
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

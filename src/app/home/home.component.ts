@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isLogedin() {
+    return (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
+  }
+
 }

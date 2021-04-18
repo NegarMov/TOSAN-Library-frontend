@@ -6,13 +6,12 @@
 }
    
 .top-img-cnt {
-    height: 28rem; 
+    height: 28rem;
 }
    
 .top-img-innercnt {
     position: absolute;
     color: white;
-    bottom: 200px; 
-    left: 30px; 
-    margin: 5rem;
+    top: 200px; 
+    left: 50px;
 }

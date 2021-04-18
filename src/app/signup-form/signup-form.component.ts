@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
+import { User } from '../_model/user';
 
 @Component({
   selector: 'app-signup-form',
@@ -14,6 +17,11 @@ export class SignupFormComponent implements OnInit {
   validPassword: boolean = true;
   passwordMatch: boolean = true;
 
+  constructor(private httpService: HttpService, private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
   onsubmit() {
     if (this.credentials.username)
       this.validUsername = true;
@@ -27,11 +35,16 @@ export class SignupFormComponent implements OnInit {
       this.passwordMatch = true;
     else
       this.passwordMatch = false;
-  }
 
-  constructor() { }
-
-  ngOnInit(): void {
+    if (this.validUsername && this.validPassword && this.passwordMatch) {
+      var newUser = new User(this.credentials.username, this.credentials.password);
+      this.httpService.addUser(newUser).subscribe(data => {
+        this.router.navigate(['/', 'login']);
+      }, error => {
+        if (error.status == 500)
+          alert("Username is already taken. Please choose another one.")
+      });
+    }
   }
 
 }

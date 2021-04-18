@@ -10,7 +10,7 @@ import { Book } from '../_model/book';
 })
 export class BookInfoComponent implements OnInit {
 
-  access: string = "admin"; //change later
+  access: string = "user"; //change later
 
   book = new Book();
 
