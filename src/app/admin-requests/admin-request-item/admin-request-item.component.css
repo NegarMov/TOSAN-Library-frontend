@@ -1,0 +1,18 @@
+.list-group-item.active {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.list-group-item:hover {
+    background-color: #FFC312;
+    border-color: #FFC312;
+    cursor: pointer;
+}
+
+.input-group {
+    width: 190px;
+}
+
+.input-group-text {
+    color: white;
+}

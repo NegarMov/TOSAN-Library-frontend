@@ -57,11 +57,6 @@ h1 {
     border:0 !important;
 }
 
-input:focus, textarea:focus {
-    outline: 0 0 0 0  !important;
-    box-shadow: 0 0 0 0 !important;
-}
-
 .input-error {
     color: #FFC312; 
     position: relative; 

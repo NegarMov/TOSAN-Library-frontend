@@ -1,0 +1,58 @@
+h1 {
+    margin: 3rem;
+    margin-left: 0px;
+}
+  
+.active {
+    background-color: #FFC312;
+    border-color: #FFC312;
+}
+
+.list-item-status {
+    width: fit-content;
+}
+
+.list-group-horizontal {
+    -ms-flex-direction: row;
+    flex-direction: row;
+    height: fit-content;
+    text-align: center;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+}
+  
+.list-group-item {
+    display: flex; 
+    align-content: center;
+}
+  
+.list-group-item-text {
+    display:inline-block; 
+    margin-left: 5%; 
+    width: 70%; 
+    height: fit-content; 
+    margin-top: auto; 
+    margin-bottom: auto;
+}
+  
+.list-group {
+    margin: 3rem;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+  
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+.top-selector {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: fit-content; 
+    margin-bottom: 3rem;
+}

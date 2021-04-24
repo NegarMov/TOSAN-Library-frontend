@@ -28,6 +28,8 @@ import { GenreComponent } from './books-by-genre/genre/genre.component';
 import { GenreBookItemComponent } from './books-by-genre/genre-book-item/genre-book-item.component';
 import { HomeComponent } from './home/home.component';
 import { AuthorInfoComponent } from './author-info/author-info.component';
+import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
+import { AdminRequestItemComponent } from './admin-requests/admin-request-item/admin-request-item.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { AuthorInfoComponent } from './author-info/author-info.component';
     GenreBookItemComponent,
     HomeComponent,
     AuthorInfoComponent,
+    AdminRequestsComponent,
+    AdminRequestItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,13 +11,12 @@ export class RequestsComponent implements OnInit {
 
   requestItems: RequestItem[] = [];
 
-  constructor(private httpService: HttpService) {
-    httpService.getAllRequests().subscribe(data => {
-      this.requestItems = data;
-    });
-  }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.getAllRequests().subscribe(data => {
+      this.requestItems = data;
+    });
   }
 
   ondeleteRequest(event: RequestItem[]) {

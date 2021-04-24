@@ -160,4 +160,24 @@ export class HttpService {
     return this.http.delete<RequestItem[]>(this.serverIP + "user/deleteRequest/" + this.getUserID() + "/" + requestID);
   }
 
+  public getAllRequests_admin() {
+    return this.http.get<RequestItem[]>(this.serverIP + "request/allRequests");
+  }
+
+  public getAcceptedRequests_admin() {
+    return this.http.get<RequestItem[]>(this.serverIP + "request/acceptedRequests");
+  }
+
+  public getRejectedRequests_admin() {
+    return this.http.get<RequestItem[]>(this.serverIP + "request/rejectedRequests");
+  }
+
+  public getPendingRequests_admin() {
+    return this.http.get<RequestItem[]>(this.serverIP + "request/pendingRequests");
+  }
+
+  public setReuqestStatus(requestID: number, status: string) {
+    return this.http.post(this.serverIP + "admin/acceptOrReject/" + requestID + "/" + status, "");
+  }
+
 }
