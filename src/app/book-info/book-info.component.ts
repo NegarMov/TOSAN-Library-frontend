@@ -24,6 +24,13 @@ export class BookInfoComponent implements OnInit {
     const title = this.route.snapshot.paramMap.get('title');
     this.httpService.getBookByName(title).subscribe(data => {
       this.book = data;
+      this.httpService.isRequested(this.book.title).subscribe(data => {
+        this.requestSent = data;
+      });
+    });
+
+    this.httpService.isAdmin().subscribe(data => {
+      this.access = (data)? "admin" : "user";
     });
   }
 
@@ -40,7 +47,7 @@ export class BookInfoComponent implements OnInit {
 
   onclickRequest() {
     this.requestSent = true;
-    //TODO: add book to user's request list
+    this.httpService.addRequest(this.book.title).subscribe();
   }
 
   saved() {

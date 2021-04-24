@@ -20,14 +20,13 @@ export class GenreComponent implements OnInit {
       this.bookSearchRes[i] = true;
   }
 
-  
   getTopBooks() {
     return this.genre.books.filter((b) => b.rating == 5);
   }
 
   onsearchBook() {
     for (var i=0; i<this.genre.books.length; i++)
-    this.bookSearchRes[i] = (this.genre.books[i].title.toLowerCase().includes(this.bookSearchedToken.toLowerCase()));
+      this.bookSearchRes[i] = (this.genre.books[i].title.toLowerCase().includes(this.bookSearchedToken.toLowerCase()));
   }
 
 }

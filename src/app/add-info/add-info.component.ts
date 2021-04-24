@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Author } from '../_model/author';
 import { Book } from '../_model/book';
-import { InputTagComponent } from './input-tag/input-tag.component';
 import { Publisher } from '../_model/publisher';
 import { HttpService } from '../http.service';
+import { Genre } from '../_model/genre';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-add-info',
@@ -12,13 +13,12 @@ import { HttpService } from '../http.service';
 })
 export class AddInfoComponent implements OnInit {
 
-  @ViewChild(InputTagComponent) tagInput: InputTagComponent;
-
   newBook = new Book();
   validBookTitle: boolean = true;
   validBookAuthor: boolean = true;
   validBookPublisher: boolean = true;
   validBookPublishingYear: boolean = true;
+  validGenre: boolean = true;
   searchedBooks: Book[];
   bookSearchedToken: string = "";
 
@@ -38,7 +38,11 @@ export class AddInfoComponent implements OnInit {
   authors: Author[] = [];
   publishers: Publisher[] = [];
 
-  constructor(private httpService: HttpService) {
+  genres: Genre[] = [];
+
+  constructor(private httpService: HttpService, private bookService: BookService) {
+    this.genres = bookService.getGenres();
+
     this.httpService.getPublishers().subscribe(data => {
       this.publishers = data;
       this.searchedPublishers = data;
@@ -74,7 +78,8 @@ export class AddInfoComponent implements OnInit {
     this.validBookAuthor = (this.newBook.author)? true: false;
     this.validBookPublisher = (this.newBook.publisher)? true: false;
     this.validBookPublishingYear = (this.newBook.publicationDate)? true : false;
-    if (this.validBookTitle && this.validBookAuthor && this.validBookPublisher && this.validBookPublishingYear) {
+    this.validGenre = (this.newBook.genre)? true : false;
+    if (this.validBookTitle && this.validBookAuthor && this.validBookPublisher && this.validBookPublishingYear && this.validGenre) {
       this.httpService.addBook(this.newBook).subscribe(data => {
         this.books = data;
         if (!this.bookSearchedToken)
@@ -85,7 +90,7 @@ export class AddInfoComponent implements OnInit {
       });
 
       this.newBook = new Book();
-      this.tagInput.tags = [];
+      //this.tagInput.tags = [];
     }
   }
 

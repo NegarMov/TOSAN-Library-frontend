@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Publisher } from './_model/publisher';
 import { Author } from './_model/author';
 import { Book } from './_model/book';
-import { User } from './_model/user';
+import { RequestItem } from './_model/request-item';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +22,8 @@ export class HttpService {
   private getBooksUrl: string;
   private addBookUrl: string;
 
-  private userSignupUrl: string;
-
   constructor(private http: HttpClient) {
-    this.serverIP = 'http://192.168.76.42:8080/';
+    this.serverIP = 'http://192.168.76.21:8080/';
     
     this.addPublisherUrl = this.serverIP + 'publisher/addPublisher';
     this.getPublishersUrl = this.serverIP + 'publisher/allPublishers';
@@ -35,25 +33,28 @@ export class HttpService {
 
     this.getBooksUrl = this.serverIP + 'book/allBooks';
     this.addBookUrl = this.serverIP + 'book/addBook';
-
-    this.userSignupUrl = this.serverIP + 'user/addUser';
   }
 
-  public addUser(user: User) {
-    return this.http.post(this.userSignupUrl, user);
+  //####### USER METHODS #######/
+  private getUserID() : number {
+    return Number.parseInt(localStorage.getItem('userID'));
+  }
+
+  public addUser(username: string, password: string) {
+    return this.http.post<boolean>(this.serverIP + 'user/addUser/' + username + "/" + password , "");
   } 
 
   public authenticateUser(username: string, password: string) {
     return this.http.post<number>(this.serverIP + "login/" + username + "/" + password, "");
   }
 
-  public getBookByName(bookName: string) {
-    return this.http.get<Book>(this.serverIP + "book/" + bookName);
+  public isAdmin() {
+    return this.http.get<boolean>(this.serverIP + "/isAdmin/" + this.getUserID());
   }
 
   //####### PUBLISHER METHODS #######/
   public getPublishers() : Observable<Publisher[]> {
-    return this.http.post<Publisher[]>(this.getPublishersUrl, "");
+    return this.http.get<Publisher[]>(this.getPublishersUrl);
   }
 
   public addPublisher(publisher: Publisher) {
@@ -61,7 +62,7 @@ export class HttpService {
   }
 
   public searchPublisher(searchedToken: string) : Observable<Publisher[]> {
-    return this.http.post<Publisher[]>(this.serverIP + 'publisher/search/' + searchedToken, "");
+    return this.http.get<Publisher[]>(this.serverIP + 'publisher/search/' + searchedToken);
   }
 
   public updatePublisher(oldName: string, newPublisher: Publisher) {
@@ -72,9 +73,17 @@ export class HttpService {
     return this.http.delete<Publisher[]>(this.serverIP + 'publisher/delete/' + publisher);
   }
 
+  public getPublisherBooks(publisherName: string) {
+    return this.http.get<Book[]>(this.serverIP + "publisher/books/" + publisherName);
+  }
+
+  public getPublisherByName(publisherName: string) {
+    return this.http.get<Publisher>(this.serverIP + "publisher/" + publisherName);
+  }
+
   //####### AUTHOR METHODS #######/
   public getAuthors() : Observable<Author[]> {
-    return this.http.post<Author[]>(this.getAuthorsUrl, "");
+    return this.http.get<Author[]>(this.getAuthorsUrl);
   }
 
   public addAuthor(author: Author) {
@@ -82,7 +91,7 @@ export class HttpService {
   }
 
   public searchAuthor(searchedToken: string) : Observable<Author[]> {
-    return this.http.post<Author[]>(this.serverIP + 'author/search/' + searchedToken, "");
+    return this.http.get<Author[]>(this.serverIP + 'author/search/' + searchedToken);
   }
 
   public deleteAuthor(author: string) {
@@ -93,17 +102,25 @@ export class HttpService {
     return this.http.post<Author>(this.serverIP + 'author/edit/' + oldName, newAuthor);
   }
 
+  public getAuthorBooks(authorName: string) {
+    return this.http.get<Book[]>(this.serverIP + "author/books/" + authorName);
+  }
+
+  public getAuthorByName(authorName: string) {
+    return this.http.get<Author>(this.serverIP + "author/" + authorName);
+  }
+
   //####### BOOK METHODS #######/
   public getBooks() : Observable<Book[]> {
-    return this.http.post<Book[]>(this.getBooksUrl, "");
+    return this.http.get<Book[]>(this.getBooksUrl);
   }
 
   public addBook(book: Book) {
-    return this.http.post<Book[]>(this.addBookUrl, book);
+    return this.http.post<Book[]>(this.addBookUrl + "/" +  book.author.name + "/" + book.publisher.name, book);
   }
 
   public searchBook(searchedToken: string) : Observable<Book[]> {
-    return this.http.post<Book[]>(this.serverIP + 'book/search/' + searchedToken, "");
+    return this.http.get<Book[]>(this.serverIP + 'book/search/' + searchedToken);
   }
 
   public deleteBook(book: string) {
@@ -112,6 +129,31 @@ export class HttpService {
 
   public updateBook(oldName: string, newBook: Book) {
     return this.http.post<Book>(this.serverIP + 'book/edit/' + oldName, newBook);
+  }
+
+  public getBookByName(bookName: string) {
+    return this.http.get<Book>(this.serverIP + "book/" + bookName);
+  }
+
+  public getBooksByGenre(genreName: string) {
+    return this.http.get<Book[]>(this.serverIP + "/book/sameGenre/" + genreName);
+  }
+
+  //####### REQUEST METHODS #######/  
+  public addRequest(bookName: string) {
+    return this.http.post(this.serverIP + "user/addRequest/" + this.getUserID() + "/" + bookName, "");
+  }
+
+  public getAllRequests() {
+    return this.http.get<RequestItem[]>(this.serverIP + "user/allRequests/" + this.getUserID());
+  }
+
+  public isRequested(bookName: string) {
+    return this.http.get<boolean>(this.serverIP + "user/isInRequest/" + this.getUserID() + "/" + bookName);
+  }
+
+  public deleteRequest(requestID: number) {
+    return this.http.delete<RequestItem[]>(this.serverIP + "user/deleteRequest/" + this.getUserID() + "/" + requestID);
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { HttpService } from 'src/app/http.service';
 import { RequestItem } from '../../_model/request-item';
 
 @Component({
@@ -9,10 +10,17 @@ import { RequestItem } from '../../_model/request-item';
 export class RequestItemComponent implements OnInit {
 
   @Input() item: RequestItem;
+  @Output() deleted = new EventEmitter<RequestItem[]>();
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+  }
+
+  ondeleteRequest() {
+    this.httpService.deleteRequest(this.item.id).subscribe(data => {
+      this.deleted.emit(data);
+    });
   }
 
 }

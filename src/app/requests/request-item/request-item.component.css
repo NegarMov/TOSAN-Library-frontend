@@ -6,4 +6,5 @@
 .list-group-item:hover {
     background-color: #FFC312;
     border-color: #FFC312;
+    cursor: pointer;
 }

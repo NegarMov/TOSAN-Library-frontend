@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,12 +9,19 @@ import { Router } from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
 
-  newRequests: number = 5;
-  access: string = "admin"; //change later
+  newRequests: number;
+  access: string;
 
-  constructor(private router: Router) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
+    this.httpService.isAdmin().subscribe(data => {
+      this.access = (data)? "admin" : "user";
+    });
+    if (this.isLogedin() && this.access == "user")
+      this.httpService.getAllRequests().subscribe(data => {
+        this.newRequests = data.length;
+      });
   }
 
   isLogedin() {
@@ -22,7 +30,6 @@ export class NavigationBarComponent implements OnInit {
 
   onlogout() {
     localStorage.clear();
-    this.router.navigate(['/']);
   }
 
 }

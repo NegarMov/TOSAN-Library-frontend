@@ -1,6 +1,5 @@
 import { Author } from "./author";
 import { Publisher } from "./publisher";
-import { User } from "./user";
 
 export class Book {
     title: string;
@@ -15,5 +14,5 @@ export class Book {
     isAvailable: boolean;
     startDate: string;
     finishDate: string;
-    user: User;
+    user: string;
 }

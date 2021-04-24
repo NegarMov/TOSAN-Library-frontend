@@ -6,17 +6,18 @@
         <div class="d-flex w-100 justify-content-between">
             <a [routerLink]="['/book', item.title]" target="_blank"><h5 class="mb-1">{{item.title}}</h5></a>
             <div>
-                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#book-' + item.title" (click)="onstartEdit()"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
+                <button class="btn btn-secondary" data-toggle="modal" [attr.data-target]="'#book-' + item.title"><i class="fa fa-edit fa-fw"></i>Edit Book</button>
                 <button class="btn btn-secondary" (click)="ondeleteBook()"><i class="fa fa-trash fa-fw"></i>Delete Book</button>
             </div>
         </div>
         <h6 class="text-muted">By: {{item.author.name}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.publisher.name}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">tags:
+        <!-- <h6 class="text-muted" style="font-size: smaller;">tags:
             <div style="display: inline-block;" *ngFor="let t of item.tags">
                 <span style="margin: 1px;" class="badge badge-pill badge-warning">{{t}}</span>
             </div>
-        </h6>
+        </h6> -->
+        <h6 class="text-muted">genre: <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{item.genre}}</span></h6>
         <p>Summary: {{item.summary}}</p>
     </div>
 </a>
@@ -64,7 +65,16 @@
                     <input type="number" max="2021" min="1600" step="1" [placeholder]="item.publicationDate" class="form-control" name="publishing-year" [(ngModel)]="editedInfo.publicationDate">
                 </div>
 
-                <app-input-tag></app-input-tag>
+                <!-- <app-input-tag></app-input-tag> -->
+
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Genre</span>
+                    </div>
+                    <select class="form-control select" name="genre" [(ngModel)]="editedInfo.genre">
+                        <option *ngFor="let genre of genres" [ngValue]="genre.serverID">{{genre.name}}</option>
+                    </select>
+                </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">

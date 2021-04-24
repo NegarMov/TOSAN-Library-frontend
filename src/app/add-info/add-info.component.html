@@ -51,7 +51,17 @@
                                 </div>
                                 <small *ngIf="!validBookPublishingYear" class="input-error">*book publishing year is required</small>
 
-                                <app-input-tag></app-input-tag>
+                                <!-- <app-input-tag></app-input-tag> -->
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Genre</span>
+                                    </div>
+                                    <select class="form-control select" name="genre" data-live-search="true" [(ngModel)]="newBook.genre">
+                                        <option *ngFor="let genre of genres" [ngValue]="genre.serverID">{{genre.name}}</option>
+                                    </select>
+                                </div>
+                                <small *ngIf="!validGenre" class="input-error">*book genre is required</small>
 
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">

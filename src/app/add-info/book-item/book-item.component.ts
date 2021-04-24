@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { BookService } from 'src/app/book.service';
 import { HttpService } from 'src/app/http.service';
 import { Author } from 'src/app/_model/author';
+import { Genre } from 'src/app/_model/genre';
 import { Publisher } from 'src/app/_model/publisher';
 import { Book } from '../../_model/book';
-import { InputTagComponent } from '../input-tag/input-tag.component';
 
 @Component({
   selector: 'app-book-item',
@@ -16,18 +17,16 @@ export class BookItemComponent implements OnInit {
   @Input() authors: Author[];
   @Input() publishers: Publisher[];
   @Output() deleted = new EventEmitter<Book>();
-  
-  @ViewChild(InputTagComponent) tagInput: InputTagComponent;
 
   editedInfo = new Book();
 
-  constructor(private httpService: HttpService) { }
+  genres: Genre[] = [];
+
+  constructor(private httpService: HttpService, private bookService: BookService) {
+    this.genres = bookService.getGenres();
+  }
 
   ngOnInit(): void { }
-
-  onstartEdit() {
-    this.tagInput.tags = this.item.tags;
-  }
 
   oneditBook() {
     if (!this.editedInfo.title)

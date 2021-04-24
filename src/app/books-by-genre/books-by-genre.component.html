@@ -1,69 +1,17 @@
-<body>
-    <div class="inner">
-        <main role="main">
-            <div class="row featurette" style="margin: 30px;">
-                <a class="container genre-cnt" data-toggle="collapse" href="#poetry-books">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/poetry.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">Poetry</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{poetryBooksNum}} Books</h6>
-                    </div>
-                </a>
-
-                <a class="container genre-cnt"  data-toggle="collapse" href="#children-books">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/children.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">children</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{childrenBooksNum}} Books</h6>
-                    </div>
-                </a>
-
-                <a class="container genre-cnt">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/sci-fi.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">Sci-Fi</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{scifiBooksNum}} Books</h6>
-                    </div>
-                </a>
-
-                <a class="container genre-cnt">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/crime fiction.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">Crime<br>Fiction</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{crimeBooksNum}} Books</h6>
-                    </div>
-                </a>
-
-                <a class="container genre-cnt">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/fantasy.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">Fantasy</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{fantasyBooksNum}} Books</h6>
-                    </div>
-                </a>
-
-                <a class="container genre-cnt">
-                    <img class="rounded-circle" width="130" height="130" src="../../assets/images/romance.png"/> 
-                    <div class="genre-text-cnt">
-                        <h2 class="genre-text">Romance</h2>
-                        <br>
-                        <h6 class="text-muted genre-text">{{romanceBooksNum}} Books</h6>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="collapse container" id="poetry-books">
-                <app-genre [genre]="poetry"></app-genre>
-            </div>
-
-            <div class="collapse container" id="children-books">
-                <app-genre [genre]="children"></app-genre>
-            </div>
-        </main>
-    </div>
-</body>
+<div class="inner">
+    <main role="main">
+        <div class="row featurette" style="margin: 30px;">
+            <a *ngFor="let genre of genres" class="container genre-cnt" data-toggle="collapse" href="#{{genre.name}}-books">
+                <img class="rounded-circle" width="130" height="130" [src]="genre.imageSrc"/> 
+                <div class="genre-text-cnt">
+                    <h2 class="genre-text">{{genre.name}}</h2>
+                    <br>
+                    <h6 class="text-muted genre-text">{{genre.quantity}} Books</h6>
+                </div>
+            </a>
+        </div>
+        <div class="collapse container" *ngFor="let genre of genres" id="{{genre.name}}-books">
+            <app-genre [genre]="genre"></app-genre>
+        </div>
+    </main>
+</div>

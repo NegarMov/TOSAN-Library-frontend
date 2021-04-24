@@ -6,7 +6,7 @@
                 <div class="list-group">
                     <div class="list-group list-group-flush">
                         <div *ngFor="let ri of requestItems">
-                            <app-request-item [item]="ri"></app-request-item>
+                            <app-request-item (deleted)="ondeleteRequest($event)" [item]="ri"></app-request-item>
                         </div>
                     </div>
                 </div>

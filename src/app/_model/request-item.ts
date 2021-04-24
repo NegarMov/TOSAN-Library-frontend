@@ -1,7 +1,8 @@
 import { Book } from "./book";
 
-export interface RequestItem {
+export class RequestItem {
+  id: number;
   book: Book;
-  startDate: Date;
+  date: Date;
   status: string;
 }

@@ -1,0 +1,32 @@
+.top-img {
+    width: 100%;
+}
+
+.title {
+    position: relative;
+    bottom: 14vw;
+    font-family: 'Brush Script MT'; 
+    font-size: 9vw;
+    color: rgb(66, 60, 60);   
+}
+
+.subtitle {
+    position: relative;
+    bottom: 15vw;
+    font-style: italic;
+    font-size: 1.5vw;
+    color: rgb(66, 60, 60); 
+}
+
+.flip {
+    transform: scaleX(-1);
+}
+
+i {
+    font-size: 5vw;
+    text-shadow: 3px 3px 5px rgb(21, 82, 82) ;
+}
+
+.list-group {
+    margin: 3rem;
+}

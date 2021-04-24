@@ -14,11 +14,12 @@
                         <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 5}"></span>
                     </div>
                     <br>
-                    <h6 class="text-muted">tags:
+                    <!-- <h6 class="text-muted">tags:
                         <div style="display: inline-block;" *ngFor="let t of book.tags">
                             <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{t}}</span>
                         </div>
-                    </h6>
+                    </h6> -->
+                    <h6 class="text-muted">genre: <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{book.genre}}</span></h6>
                     <p class="lead">Summary: {{book.summary}}</p>
                     <div *ngIf="access == 'user'" >
                         <!--====== Buttons =======-->
