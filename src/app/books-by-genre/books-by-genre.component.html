@@ -10,8 +10,8 @@
                 </div>
             </a>
         </div>
-        <div class="collapse container" *ngFor="let genre of genres" id="{{genre.name}}-books">
-            <app-genre [genre]="genre"></app-genre>
+        <div class="collapse container" *ngFor="let genre of genres; let i = index" id="{{genre.name}}-books">
+            <app-genre [id]="i"></app-genre>
         </div>
     </main>
 </div>

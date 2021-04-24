@@ -98,13 +98,6 @@ hr {
 .list-item-status {
     width: fit-content;
 }
-
-.header-box {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    padding-right: 45px;
-}
   
 .featurette-heading {
     font-weight: 300;

@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BookService } from 'src/app/book.service';
+import { HttpService } from 'src/app/http.service';
+import { Book } from 'src/app/_model/book';
 import { Genre } from 'src/app/_model/genre';
 
 @Component({
@@ -8,16 +11,21 @@ import { Genre } from 'src/app/_model/genre';
 })
 export class GenreComponent implements OnInit {
 
-  @Input() genre: Genre;
+  @Input() id: number;
 
   bookSearchedToken: string = "";
-  bookSearchRes = new Array();
+  genre: Genre;
+  searchedBooks: Book[];
 
-  constructor() { }
+  constructor(private httpService: HttpService, private bookService: BookService) { }
 
   ngOnInit(): void {
-    for (var i=0; i<this.genre.books.length; i++)
-      this.bookSearchRes[i] = true;
+    this.genre = this.bookService.genres[this.id];
+    this.httpService.getBooksByGenre(this.genre.serverID).subscribe(data => {
+      this.genre.books = data;
+      this.searchedBooks = data;
+      this.genre.quantity = data.length;
+    });
   }
 
   getTopBooks() {
@@ -25,8 +33,12 @@ export class GenreComponent implements OnInit {
   }
 
   onsearchBook() {
-    for (var i=0; i<this.genre.books.length; i++)
-      this.bookSearchRes[i] = (this.genre.books[i].title.toLowerCase().includes(this.bookSearchedToken.toLowerCase()));
+    if (!this.bookSearchedToken)
+      this.searchedBooks = this.genre.books;
+    else
+      this.httpService.searchBooksByGenre(this.genre.serverID, this.bookSearchedToken).subscribe(data => {
+        this.searchedBooks = data;
+      })
   }
 
 }

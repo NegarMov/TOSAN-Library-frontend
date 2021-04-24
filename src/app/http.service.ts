@@ -139,6 +139,10 @@ export class HttpService {
     return this.http.get<Book[]>(this.serverIP + "/book/sameGenre/" + genreName);
   }
 
+  public searchBooksByGenre(genreName: string, searchedToken: string) {
+    return this.http.get<Book[]>(this.serverIP + "/book/sameGenre/search/" + genreName + "/" + searchedToken);
+  }
+
   //####### REQUEST METHODS #######/  
   public addRequest(bookName: string) {
     return this.http.post(this.serverIP + "user/addRequest/" + this.getUserID() + "/" + bookName, "");

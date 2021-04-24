@@ -2,10 +2,10 @@
 <hr>
 <p>{{genre.explanation}}</p>
 <br><br>
-<div class="container">
+<!-- <div class="container">
     <h2 class="top-books">Top {{genre.name}} Books</h2>
 </div>
-<app-book-carousel [books]="getTopBooks()" [id]="genre.name"></app-book-carousel>
+<app-book-carousel [books]="getTopBooks()" [id]="genre.name"></app-book-carousel> -->
 <div class="container">
     <div class="header-box">
         <h2>Search books in {{genre.name}} section:</h2>
@@ -15,8 +15,8 @@
         </form>
     </div>
     <div class="list-group list-group-flush">
-        <div *ngFor="let b of genre.books; let i = index">
-            <app-genre-book-item *ngIf="bookSearchRes[i]" [item]="b"></app-genre-book-item>
+        <div *ngFor="let b of searchedBooks">
+            <app-genre-book-item [item]="b"></app-genre-book-item>
         </div>
     </div> 
 </div>
