@@ -14,7 +14,7 @@ export class BookInfoComponent implements OnInit {
 
   book = new Book();
 
-  saveMessage: string = "Add to read later";
+  saveMessage: string = "";
   requestSent: boolean = false;
   userRating: number = 0; //for user
 
@@ -27,6 +27,9 @@ export class BookInfoComponent implements OnInit {
       this.httpService.isRequested(this.book.title).subscribe(data => {
         this.requestSent = data;
       });
+      this.httpService.isInFavourite(this.book.title).subscribe(data => {
+        this.saveMessage = (data)? "Remove from read later" : "Add to read later";
+      });
     });
 
     var isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
@@ -38,12 +41,12 @@ export class BookInfoComponent implements OnInit {
 
   onclickSave() {
     if (this.saveMessage == "Add to read later") {
+      this.httpService.addBookToFavourite(this.book.title).subscribe();
       this.saveMessage = "Remove from read later";
-      //TODO: remove book from user's read later list
     }
     else {
+      this.httpService.removeBookfromFavourite(this.book.title).subscribe();
       this.saveMessage = "Add to read later";
-      //TODO: add book to user's read later list
     }
   }
 

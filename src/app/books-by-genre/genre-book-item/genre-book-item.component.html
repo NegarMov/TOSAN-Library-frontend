@@ -8,10 +8,12 @@
         </div>
         <h6 class="text-muted">By: {{item.author.name}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.publisher.name}}</h6>
-        <h6 class="text-muted" style="font-size: smaller;">tags:
+        <h6 class="text-muted">genre: <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{item.genre}}</span></h6>
+        <!-- <h6 class="text-muted" style="font-size: smaller;">tags:
             <div style="display: inline-block;" *ngFor="let t of item.tags">
                 <span style="margin: 1px;" class="badge badge-pill badge-warning">{{t}}</span>
             </div>
-        </h6>
+        </h6> -->
+        <img *ngIf="!item.isAvailable" src="../../assets/images/unavailable.png" style="width: 70px; position: absolute; right: 15px; top: 15px;">
     </div>
 </a>

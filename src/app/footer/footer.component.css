@@ -1,7 +1,6 @@
 .footer {
-    background-color: rgb(0, 0, 0, 0.6);
     padding: 30px;
-    height: 15vh;
+    height: auto;
     color: #FFC312; 
     font-size: 20px;
 }  

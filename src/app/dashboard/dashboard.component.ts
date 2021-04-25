@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../_model/book';
 import { HistoryItem } from '../_model/history-item';
-import { RecommendedItem } from '../_model/recommended-item';
+import { HttpService } from '../_service/http.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,23 +14,14 @@ export class DashboardComponent implements OnInit {
 
   historyItems: HistoryItem[];
 
-  recommendedItems: RecommendedItem[];
+  favouriteBooks: Book[] = [];
 
-  onclickAll() {
-    this.selected = "all";
-  }
-  
-  onclickSaved() {
-    this.selected = "saved";
-  }
-  
-  onclickRejected() {
-    this.selected = "rejected";
-  }
-
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.getFavoriteBooks().subscribe(data => {
+      this.favouriteBooks = data;
+    });
   }
 
 }

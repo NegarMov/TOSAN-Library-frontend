@@ -27,33 +27,42 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
     
-    if (this.isLogedin)
+    if (this.isLogedin) {
       this.httpService.isAdmin().subscribe(data => {
         this.access = (data)? "admin" : "user";
-        if (this.access == "user") {
+        this.httpService.getUsername().subscribe(data => {
+          this.username = data.username;
+        });
+        if (this.access == "user")
           this.httpService.getAllRequests().subscribe(data => {
             this.newRequests = data.length;
           });
-        }
-        else {
+        else
           this.username = "admin";
           this.httpService.getAllRequests_admin().subscribe(data => {
             this.newRequests = data.length;
           });
-        }
       });
+    }
   }
 
   onsearch() {
-    this.httpService.searchBook(this.searchedToken).subscribe(data => {
-      this.searchedBooks = data;
-    });
-    this.httpService.searchAuthor(this.searchedToken).subscribe(data => {
-      this.searchedAuthors = data;
-    });
-    this.httpService.searchPublisher(this.searchedToken).subscribe(data => {
-      this.searchedPublishers = data;
-    });
+    if (this.searchedToken) {
+      this.httpService.searchBook(this.searchedToken).subscribe(data => {
+        this.searchedBooks = data;
+      });
+      this.httpService.searchAuthor(this.searchedToken).subscribe(data => {
+        this.searchedAuthors = data;
+      });
+      this.httpService.searchPublisher(this.searchedToken).subscribe(data => {
+        this.searchedPublishers = data;
+      });
+    }
+    else {
+      this.searchedAuthors = [];
+      this.searchedBooks = [];
+      this.searchedPublishers = [];
+    }
   }
 
   onlogout() {

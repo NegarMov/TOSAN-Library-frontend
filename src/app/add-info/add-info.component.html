@@ -12,7 +12,7 @@
                 <div class="col-8">
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="list-book">
-                            <h3>Add a new book</h3>
+                            <h3><i class="fa fa-book fa-fw"></i> Add a new book</h3>
                             <hr>
                             <form>
                                 <div class="input-group form-group">
@@ -83,7 +83,7 @@
                             </form>
                         </div>
                         <div class="tab-pane fade show" id="list-author">
-                            <h3>Add a new Author</h3>
+                            <h3><i class="fa fa-edit fa-fw"></i> Add a new Author</h3>
                             <hr>
                             <form>
                                 <div class="input-group form-group">
@@ -116,7 +116,7 @@
                             </form>
                         </div>
                         <div class="tab-pane fade show" id="list-publisher">
-                            <h3>Add a new Publisher</h3>
+                            <h3><i class="fa fa-newspaper-o fa-fw"></i> Add a new Publisher</h3>
                             <hr>
                             <form>
                                 <div class="input-group form-group">
@@ -146,7 +146,7 @@
 
             <div class="container">
                 <div class="header-box">
-                    <h1 style="display: inline-block;">Books</h1>
+                    <h1 style="display: inline-block;"><i class="fa fa-book fa-fw"></i> Books</h1>
                     <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search Books" [(ngModel)]="bookSearchedToken" [ngModelOptions]="{standalone: true}">
                         <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchBook()">Search</button>
@@ -161,7 +161,7 @@
 
             <div class="container">
                 <div class="header-box">
-                    <h1 style="display: inline-block;">Authors</h1>
+                    <h1 style="display: inline-block;"><i class="fa fa-edit fa-fw"></i> Authors</h1>
                     <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search Authors" [(ngModel)]="authorSearchedToken" [ngModelOptions]="{standalone: true}">
                         <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchAuthor()">Search</button>
@@ -176,7 +176,7 @@
 
             <div class="container">
                 <div class="header-box">
-                    <h1 style="display: inline-block;">Publishers</h1>
+                    <h1 style="display: inline-block;"><i class="fa fa-newspaper-o fa-fw"></i> Publishers</h1>
                     <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search Publishers" [(ngModel)]="publisherSearchedToken" [ngModelOptions]="{standalone: true}">
                         <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchPublisher()">Search</button>

@@ -38,13 +38,13 @@
                 <div class="input-group rounded mt-2 mt-md-0" style="width: auto;">
                     <input type="search" class="form-control rounded mr-sm-2 dropdown-toggle" data-toggle="dropdown" (keyup)="onsearch()" [(ngModel)]="searchedToken" placeholder="Search" style="margin-right: 3px !important;">
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header">Books</li>
+                        <li class="dropdown-header"><i class="fa fa-book fa-fw"></i> Books</li>
                         <li *ngFor="let b of searchedBooks"><a class="dropdown-item" routerLink="/book/{{b.title}}">{{b.title}}</a></li>
                         <div class="dropdown-divider"></div>
-                        <li class="dropdown-header">Authors</li>
+                        <li class="dropdown-header"><i class="fa fa-edit fa-fw"></i> Authors</li>
                         <li *ngFor="let a of searchedAuthors"><a class="dropdown-item" routerLink="/author/{{a.name}}">{{a.name}}</a></li>
                         <div class="dropdown-divider"></div>
-                        <li class="dropdown-header">Publishers</li>
+                        <li class="dropdown-header"><i class="fa fa-newspaper-o fa-fw"></i> Publishers</li>
                         <li *ngFor="let p of searchedPublishers"><a class="dropdown-item" routerLink="/publisher/{{p.name}}">{{p.name}}</a></li>
                     </ul>
 
@@ -55,7 +55,7 @@
 
                 <span class="nav-item dropdown" *ngIf="isLogedin">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
-                        <i class="fa fa-user-circle-o fa-fw"></i> Profile</a>
+                        <i class="fa fa-user-circle-o fa-fw"></i> {{username}}</a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a *ngIf="access === 'user'" class="dropdown-item" routerLink="/dashboard"><i class="fa fa-drivers-license fa-fw"></i> Dashboard</a></li>
                         <li><a *ngIf="access === 'admin'" class="dropdown-item" routerLink="admin/edit-info"><i class="fa fa-edit fa-fw"></i> Dashboard</a></li>

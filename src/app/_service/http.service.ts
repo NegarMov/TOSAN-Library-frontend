@@ -5,6 +5,7 @@ import { Publisher } from '../_model/publisher';
 import { Author } from '../_model/author';
 import { Book } from '../_model/book';
 import { RequestItem } from '../_model/request-item';
+import { User } from '../_model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ export class HttpService {
 
   public isAdmin() {
     return this.http.get<boolean>(this.serverIP + "/isAdmin/" + this.getUserID());
+  }
+
+  public getUsername() {
+    return this.http.get<User>(this.serverIP + "/user/" + this.getUserID()) ;
   }
 
   //####### PUBLISHER METHODS #######/
@@ -143,21 +148,41 @@ export class HttpService {
     return this.http.get<Book[]>(this.serverIP + "/book/sameGenre/search/" + genreName + "/" + searchedToken);
   }
 
+  public getFavoriteBooks() {
+    return this.http.get<Book[]>(this.serverIP + "user/allFavoriteBooks/" + this.getUserID());
+  }
+
+  public addBookToFavourite(bookTitle: string) {
+    return this.http.post(this.serverIP + "user/addFavoriteBook/" + this.getUserID() + "/" + bookTitle, "");
+  }
+
+  public removeBookfromFavourite(bookTitle: string) {
+    return this.http.delete(this.serverIP + "user/deleteFavoriteBook/" + this.getUserID() + "/" + bookTitle);
+  }
+
+  public isInFavourite(bookTitle: string) {
+    return this.http.get<boolean>(this.serverIP + "user/isInFavoriteBooks/" + this.getUserID() + "/" + bookTitle);
+  }
+
   //####### REQUEST METHODS #######/  
   public addRequest(bookName: string) {
     return this.http.post(this.serverIP + "user/addRequest/" + this.getUserID() + "/" + bookName, "");
   }
 
-  public getAllRequests() {
-    return this.http.get<RequestItem[]>(this.serverIP + "user/allRequests/" + this.getUserID());
+  public deleteRequest(requestID: number) {
+    return this.http.delete<RequestItem[]>(this.serverIP + "user/deleteRequest/" + this.getUserID() + "/" + requestID);
   }
 
   public isRequested(bookName: string) {
     return this.http.get<boolean>(this.serverIP + "user/isInRequest/" + this.getUserID() + "/" + bookName);
   }
 
-  public deleteRequest(requestID: number) {
-    return this.http.delete<RequestItem[]>(this.serverIP + "user/deleteRequest/" + this.getUserID() + "/" + requestID);
+  public getAllRequests() {
+    return this.http.get<RequestItem[]>(this.serverIP + "user/allRequests/" + this.getUserID());
+  }
+  
+  public getAcceptedRequests() {
+    return this.http.get<RequestItem[]>(this.serverIP + "user/acceptedRequests");
   }
 
   public getAllRequests_admin() {

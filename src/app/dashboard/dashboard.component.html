@@ -9,22 +9,10 @@
                     </div>
                 </div>
 
-                <hr style="justify-self: center; margin-bottom: 3rem; margin-top: 3rem;">
-
-                <div style="display: flex; justify-content: space-between; height: fit-content;">
-                    <h1 style="display: inline; margin: auto; margin-left: 0px;">Books you may want to read</h1>
-                    <div class="list-group list-group-horizontal inline float-right">
-                        <a class="list-group-item list-group-item-action list-item-status active" (click)="onclickAll()" data-toggle="list">All</a>
-                        <a class="list-group-item list-group-item-action list-item-status" (click)="onclickSaved()" data-toggle="list">Read Later</a>
-                        <a class="list-group-item list-group-item-action list-item-status" (click)="onclickRejected()" data-toggle="list">Rejected</a>
-                    </div>
-                </div> 
-
-                <div class="list-group list-group-flush"  style="margin-top: 0px;">
-                    <div class="list-group list-group-flush">
-                        <div *ngFor="let ri of recommendedItems">
-                            <app-recommended-item [selected]="selected" [item]="ri"></app-recommended-item>
-                        </div>
+                <h1><i class="fa fa-bookmark fa-fw"></i> Favourite Books</h1>
+                <div class="list-group list-group-flush">
+                    <div *ngFor="let fb of favouriteBooks">
+                        <app-genre-book-item [item]="fb"></app-genre-book-item>
                     </div>
                 </div>
             </div>
