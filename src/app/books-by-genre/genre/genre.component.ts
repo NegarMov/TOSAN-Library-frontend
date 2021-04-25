@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BookService } from 'src/app/book.service';
-import { HttpService } from 'src/app/http.service';
+import { BookService } from 'src/app/_service/book.service';
+import { HttpService } from 'src/app/_service/http.service';
 import { Book } from 'src/app/_model/book';
 import { Genre } from 'src/app/_model/genre';
 

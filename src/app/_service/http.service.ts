@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Publisher } from './_model/publisher';
-import { Author } from './_model/author';
-import { Book } from './_model/book';
-import { RequestItem } from './_model/request-item';
+import { Publisher } from '../_model/publisher';
+import { Author } from '../_model/author';
+import { Book } from '../_model/book';
+import { RequestItem } from '../_model/request-item';
 
 @Injectable({
   providedIn: 'root'

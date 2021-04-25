@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HttpService } from 'src/app/http.service';
+import { HttpService } from 'src/app/_service/http.service';
 import { Author } from '../../_model/author';
 
 @Component({

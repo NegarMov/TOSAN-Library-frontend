@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddInfoComponent } from './add-info/add-info.component';
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './_auth/auth.guard';
 import { AuthorInfoComponent } from './author-info/author-info.component';
 import { BookInfoComponent } from './book-info/book-info.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';

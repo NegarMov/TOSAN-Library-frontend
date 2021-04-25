@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { BookService } from 'src/app/book.service';
-import { HttpService } from 'src/app/http.service';
+import { BookService } from 'src/app/_service/book.service';
+import { HttpService } from 'src/app/_service/http.service';
 import { Author } from 'src/app/_model/author';
 import { Genre } from 'src/app/_model/genre';
 import { Publisher } from 'src/app/_model/publisher';

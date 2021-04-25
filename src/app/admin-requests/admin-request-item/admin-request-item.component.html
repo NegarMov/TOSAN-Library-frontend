@@ -10,7 +10,7 @@
                     <span class="input-group-text bg-info">Status</span>
                 </div>
                 <select class="form-control select" name="status" data-live-search="true" [(ngModel)]="item.status" (change)="onchangeStatus($event.target.value)">
-                    <option>Accepted</option>
+                    <option [disabled]="!item.book.isAvailable">Accepted</option>
                     <option>Rejected</option>
                     <option disabled>Pending</option>
                 </select>

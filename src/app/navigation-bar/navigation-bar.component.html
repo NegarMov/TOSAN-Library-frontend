@@ -13,34 +13,47 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown">Books</a>
                         <ul class="dropdown-menu" style="columns: 4;">
-                        <li class="dropdown-header" href="#">Children</li>
-                        <li><a class="dropdown-item" href="#">Children</a></li>
-                        <li><a class="dropdown-item" href="#">Poetry</a></li>
-                        <li><a class="dropdown-item" href="#">Fantasy</a></li>
-                        <li class="dropdown-header" href="#">Comedy</li> 
-                        <li><a class="dropdown-item" href="#">Crime Fiction</a></li>
-                        <li><a class="dropdown-item" href="#">Children</a></li>
-                        <li><a class="dropdown-item" href="#">Romance</a></li>
-                        <li class="dropdown-header" href="#">Adults</li> 
-                        <li><a class="dropdown-item" href="#">Poetry</a></li>
-                        <li><a class="dropdown-item" href="#">Sci-Fi</a></li>
-                        <li><a class="dropdown-item" href="#">Romance</a></li>
-                        <li><a class="dropdown-item" href="#">Crime Fiction</a></li>
-                        <div class="dropdown-divider"></div>
-                        <li><a class="dropdown-item" href="#">Others</a></li>
+                            <li class="dropdown-header" href="#">Children</li>
+                            <li><a class="dropdown-item" href="#">Children</a></li>
+                            <li><a class="dropdown-item" href="#">Poetry</a></li>
+                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                            <li class="dropdown-header" href="#">Comedy</li> 
+                            <li><a class="dropdown-item" href="#">Crime Fiction</a></li>
+                            <li><a class="dropdown-item" href="#">Children</a></li>
+                            <li><a class="dropdown-item" href="#">Romance</a></li>
+                            <li class="dropdown-header" href="#">Adults</li> 
+                            <li><a class="dropdown-item" href="#">Poetry</a></li>
+                            <li><a class="dropdown-item" href="#">Sci-Fi</a></li>
+                            <li><a class="dropdown-item" href="#">Romance</a></li>
+                            <li><a class="dropdown-item" href="#">Crime Fiction</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#">Others</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                 </ul>
+                
+                <div class="input-group rounded mt-2 mt-md-0" style="width: auto;">
+                    <input type="search" class="form-control rounded mr-sm-2 dropdown-toggle" data-toggle="dropdown" (keyup)="onsearch()" [(ngModel)]="searchedToken" placeholder="Search" style="margin-right: 3px !important;">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Books</li>
+                        <li *ngFor="let b of searchedBooks"><a class="dropdown-item" routerLink="/book/{{b.title}}">{{b.title}}</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="dropdown-header">Authors</li>
+                        <li *ngFor="let a of searchedAuthors"><a class="dropdown-item" routerLink="/author/{{a.name}}">{{a.name}}</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="dropdown-header">Publishers</li>
+                        <li *ngFor="let p of searchedPublishers"><a class="dropdown-item" routerLink="/publisher/{{p.name}}">{{p.name}}</a></li>
+                    </ul>
 
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-yellow my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                    <span class="input-group-text border-0" style="margin-right: 10px; background-color: #FFC312;">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
 
-                <span class="nav-item dropdown" *ngIf="isLogedin()">
+                <span class="nav-item dropdown" *ngIf="isLogedin">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
                         <i class="fa fa-user-circle-o fa-fw"></i> Profile</a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -53,7 +66,7 @@
                     </ul>
                 </span>
 
-                <span class="nav-item dropdown" *ngIf="!isLogedin()">
+                <span class="nav-item dropdown" *ngIf="!isLogedin">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
                         <i class="fa fa-user-circle-o fa-fw"></i> Login | Register</a>
                     <ul class="dropdown-menu dropdown-menu-right">

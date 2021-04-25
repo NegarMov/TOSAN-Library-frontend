@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { HttpService } from '../http.service';
+import { HttpService } from '../_service/http.service';
 import { Book } from '../_model/book';
 
 @Component({
@@ -10,7 +10,7 @@ import { Book } from '../_model/book';
 })
 export class BookInfoComponent implements OnInit {
 
-  access: string = "user"; //change later
+  access: string = "";
 
   book = new Book();
 
@@ -29,9 +29,11 @@ export class BookInfoComponent implements OnInit {
       });
     });
 
-    this.httpService.isAdmin().subscribe(data => {
-      this.access = (data)? "admin" : "user";
-    });
+    var isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
+    if (isLogedin)
+      this.httpService.isAdmin().subscribe(data => {
+        this.access = (data)? "admin" : "user";
+      });
   }
 
   onclickSave() {

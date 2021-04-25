@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Author } from '../_model/author';
 import { Book } from '../_model/book';
 import { Publisher } from '../_model/publisher';
-import { HttpService } from '../http.service';
+import { HttpService } from '../_service/http.service';
 import { Genre } from '../_model/genre';
-import { BookService } from '../book.service';
+import { BookService } from '../_service/book.service';
 
 @Component({
   selector: 'app-add-info',
