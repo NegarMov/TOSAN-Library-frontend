@@ -1,4 +1,4 @@
-<div style="background-color: white;">
+<div class="inner">
     <div style="text-align: center; width: 100%;">
         <img src="../../assets/images/typewriter.jpg" class="top-img">
         <h1 class="title"><i class="fa fa-leaf flip"></i>  {{item.name}}  <i class="fa fa-leaf"></i></h1>
@@ -9,7 +9,7 @@
         <h1 style="margin-left: 2.5rem;">Books by this {{type}}: </h1>
         <div class="list-group list-group-flush">
             <div *ngFor="let b of books">
-                <app-genre-book-item [item]="b"></app-genre-book-item>
+                <app-book-item [item]="b"></app-book-item>
             </div>
         </div>
     </div> 

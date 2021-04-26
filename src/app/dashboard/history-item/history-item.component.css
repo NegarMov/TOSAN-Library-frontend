@@ -1,9 +1,0 @@
-.list-group-item:active {
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.list-group-item:hover {
-    background-color: #FFC312;
-    border-color: #FFC312;
-}

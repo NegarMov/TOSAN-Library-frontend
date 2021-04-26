@@ -5,7 +5,7 @@ import { Publisher } from '../../_model/publisher';
 @Component({
   selector: 'app-publisher-item',
   templateUrl: './publisher-item.component.html',
-  styleUrls: ['./publisher-item.component.css', '../add-info.component.css']
+  styleUrls: ['./publisher-item.component.css', '../../add-info/add-info.component.css']
 })
 export class PublisherItemComponent implements OnInit {
 

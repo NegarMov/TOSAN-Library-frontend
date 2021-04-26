@@ -23,7 +23,12 @@ export class BookInfoComponent implements OnInit {
   ngOnInit(): void {
     const title = this.route.snapshot.paramMap.get('title');
     this.httpService.getBookByName(title).subscribe(data => {
-      this.book = data;
+      if (data)
+          this.book = data;  
+      else {
+        this.router.navigate(['page-not-found']);
+        return;
+      }
       this.httpService.isRequested(this.book.title).subscribe(data => {
         this.requestSent = data;
       });

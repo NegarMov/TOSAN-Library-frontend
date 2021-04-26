@@ -21,7 +21,12 @@ export class AuthorInfoComponent implements OnInit {
     this.type = this.route.snapshot.url[0].path;
     if (this.type == "author") {
       this.httpService.getAuthorByName(name).subscribe( data => {
-        this.item = data;  
+        if (data)
+          this.item = data;  
+        else {
+          this.router.navigate(['page-not-found']);
+          return;
+        }
       });
       this.httpService.getAuthorBooks(name).subscribe(data => {
         this.books = data;
@@ -29,7 +34,12 @@ export class AuthorInfoComponent implements OnInit {
     }
     else {
       this.httpService.getPublisherByName(name).subscribe( data => {
-        this.item = data;  
+        if (data)
+          this.item = data;  
+        else {
+          this.router.navigate(['page-not-found']);
+          return;
+        }
       });
       this.httpService.getPublisherBooks(name).subscribe(data => {
         this.books = data;

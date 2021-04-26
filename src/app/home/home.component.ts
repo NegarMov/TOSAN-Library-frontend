@@ -7,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  isLogedin: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  isLogedin() {
-    return (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
+    this.isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
   }
 
 }

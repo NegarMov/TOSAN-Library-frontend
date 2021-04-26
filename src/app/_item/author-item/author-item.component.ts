@@ -5,7 +5,7 @@ import { Author } from '../../_model/author';
 @Component({
   selector: 'app-author-item',
   templateUrl: './author-item.component.html',
-  styleUrls: ['./author-item.component.css', '../add-info.component.css']
+  styleUrls: ['./author-item.component.css', '../../add-info/add-info.component.css']
 })
 export class AuthorItemComponent implements OnInit {
 

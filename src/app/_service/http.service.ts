@@ -182,7 +182,7 @@ export class HttpService {
   }
   
   public getAcceptedRequests() {
-    return this.http.get<RequestItem[]>(this.serverIP + "user/acceptedRequests");
+    return this.http.get<RequestItem[]>(this.serverIP + "user/acceptedRequests/" + this.getUserID());
   }
 
   public getAllRequests_admin() {

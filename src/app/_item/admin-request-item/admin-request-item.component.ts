@@ -5,7 +5,7 @@ import { RequestItem } from 'src/app/_model/request-item';
 @Component({
   selector: 'app-admin-request-item',
   templateUrl: './admin-request-item.component.html',
-  styleUrls: ['../admin-requests.component.css', './admin-request-item.component.css']
+  styleUrls: ['../../admin-requests/admin-requests.component.css', './admin-request-item.component.css']
 })
 export class AdminRequestItemComponent implements OnInit {
 
@@ -18,7 +18,9 @@ export class AdminRequestItemComponent implements OnInit {
   }
 
   onchangeStatus(event: string) {
-    this.httpService.setReuqestStatus(this.item.id, event).subscribe();
+    this.httpService.setReuqestStatus(this.item.id, event).subscribe(() => {
+      location.reload();
+    });
   }
 
 }

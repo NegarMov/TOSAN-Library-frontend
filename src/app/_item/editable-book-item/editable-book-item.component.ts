@@ -7,11 +7,11 @@ import { Publisher } from 'src/app/_model/publisher';
 import { Book } from '../../_model/book';
 
 @Component({
-  selector: 'app-book-item',
-  templateUrl: './book-item.component.html',
-  styleUrls: ['./book-item.component.css', '../add-info.component.css']
+  selector: 'app-editable-book-item',
+  templateUrl: './editable-book-item.component.html',
+  styleUrls: ['./editable-book-item.component.css', '../../add-info/add-info.component.css']
 })
-export class BookItemComponent implements OnInit {
+export class EditableBookItemComponent implements OnInit {
 
   @Input() item: Book;
   @Input() authors: Author[];

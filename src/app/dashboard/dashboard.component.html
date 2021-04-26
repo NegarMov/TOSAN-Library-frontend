@@ -2,17 +2,24 @@
     <div class="inner">
         <main role="main">
             <div class="container">
-                <h1>History</h1>
+                <h1><i class="fa fa-history fa-fw"></i> History</h1>
                 <div class="list-group list-group-flush">
+                    <div *ngFor="let ac of acceptedRequests">
+                        <app-book-item [item]="ac.book"></app-book-item>
+                    </div>
+                </div>
+                <!-- <div class="list-group list-group-flush">
                     <div *ngFor="let hi of historyItems">
                         <app-history-item [item]="hi"></app-history-item>
                     </div>
-                </div>
+                </div> -->
+
+                <hr style="align-self: center; margin: 2rem 3rem 2rem 3rem">
 
                 <h1><i class="fa fa-bookmark fa-fw"></i> Favourite Books</h1>
                 <div class="list-group list-group-flush">
                     <div *ngFor="let fb of favouriteBooks">
-                        <app-genre-book-item [item]="fb"></app-genre-book-item>
+                        <app-book-item [item]="fb"></app-book-item>
                     </div>
                 </div>
             </div>
