@@ -29,6 +29,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthorInfoComponent } from './author-info/author-info.component';
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { AdminRequestItemComponent } from './admin-requests/admin-request-item/admin-request-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AdminRequestItemComponent } from './admin-requests/admin-request-item/a
     AuthorInfoComponent,
     AdminRequestsComponent,
     AdminRequestItemComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

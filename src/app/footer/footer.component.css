@@ -1,5 +1,5 @@
 .footer {
-    padding: 30px;
+    padding: 0.5rem 4rem 0.5rem 4rem;
     height: auto;
     color: #FFC312; 
     font-size: 20px;
@@ -10,4 +10,13 @@
     z-index: -1;
     bottom: 0px;
     left: 0px;
+}
+
+.back-to-top-btn {
+    color: white; 
+    border-color: transparent;
+    text-shadow: 3px 3px 5px black;
+    font-size: 30px; 
+    font-family: 'Brush Script MT';
+    font-style: italic, bold; 
 }

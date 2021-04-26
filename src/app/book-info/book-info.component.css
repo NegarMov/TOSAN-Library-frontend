@@ -9,6 +9,13 @@
     letter-spacing: -.05rem;
     margin-top: 3rem;
 } 
+
+.unavailable-stamp {
+    width: 125px; 
+    position: absolute; 
+    right: 35px; 
+    top: 15px;
+}
   
 /***Stars***/
   

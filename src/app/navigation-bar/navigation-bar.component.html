@@ -1,7 +1,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Library</a>
+            <a class="navbar-brand shadow" routerLink="/">Library</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,8 +54,8 @@
                 </div>
 
                 <span class="nav-item dropdown" *ngIf="isLogedin">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
-                        <i class="fa fa-user-circle-o fa-fw"></i> {{username}}</a>
+                    <a class="nav-link dropdown-toggle shadow" href="#" data-toggle="dropdown" style="color: white;">
+                        <i class="fa fa-user-circle-o fa-fw" style="font-size: larger;"></i> {{username}}  </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a *ngIf="access === 'user'" class="dropdown-item" routerLink="/dashboard"><i class="fa fa-drivers-license fa-fw"></i> Dashboard</a></li>
                         <li><a *ngIf="access === 'admin'" class="dropdown-item" routerLink="admin/edit-info"><i class="fa fa-edit fa-fw"></i> Dashboard</a></li>
@@ -67,8 +67,8 @@
                 </span>
 
                 <span class="nav-item dropdown" *ngIf="!isLogedin">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: white;">
-                        <i class="fa fa-user-circle-o fa-fw"></i> Login | Register</a>
+                    <a class="nav-link dropdown-toggle shadow" href="#" data-toggle="dropdown" style="color: white;">
+                        <i class="fa fa-user-circle-o fa-fw"></i> Login | Register  </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" routerLink="/login"><i class="fa fa-sign-in fa-fw"></i> Sign in</a></li>
                         <li><a class="dropdown-item" routerLink="/signup"><i class="fa fa-user-plus fa-fw"></i> Sign up</a></li>

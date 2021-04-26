@@ -1,0 +1,10 @@
+.inner {
+    padding-top: 3rem; 
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+}

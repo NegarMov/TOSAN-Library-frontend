@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RequestsComponent } from './requests/requests.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -24,8 +25,7 @@ const routes: Routes = [
   { path: 'author/:name', component: AuthorInfoComponent },
   { path: 'publisher/:name', component: AuthorInfoComponent },
   { path: '', component: HomeComponent },
-  { path: '**', redirectTo: ''}
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
