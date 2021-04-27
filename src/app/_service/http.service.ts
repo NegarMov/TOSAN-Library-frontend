@@ -57,6 +57,15 @@ export class HttpService {
     return this.http.get<User>(this.serverIP + "/user/" + this.getUserID()) ;
   }
 
+  //####### RATING METHODS #######/
+  public addOrUpdateRating(rating: number, bookTitle: string) {
+    return this.http.post(this.serverIP + "user/addRating/" + this.getUserID() + "/" + bookTitle, rating);
+  }
+
+  public getUserRating(bookTitle: string) {
+    return this.http.get<number>(this.serverIP + "user/getRating/" + this.getUserID() + "/" + bookTitle);
+  }
+
   //####### PUBLISHER METHODS #######/
   public getPublishers() : Observable<Publisher[]> {
     return this.http.get<Publisher[]>(this.getPublishersUrl);

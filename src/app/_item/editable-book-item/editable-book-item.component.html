@@ -1,7 +1,6 @@
 <a class="list-group-item list-group-item-action">
-    <div style="display: inline-block; height: fit-content; margin-top: auto; margin-bottom: auto;">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">75x75</text></svg>
-    </div>
+    <img class="hover-effect cover-img" src="../../../assets/images/{{item.coverUrl}}" height="150px">
+    <img *ngIf="!item.isAvailable" src="../../assets/images/unavailable.png" style="width: 70px; position: absolute; right: 10px; bottom: 10px;">
     <div class="list-item-text">
         <div class="d-flex w-100 justify-content-between">
             <a [routerLink]="['/book', item.title]" target="_blank"><h5 class="mb-1">{{item.title}}</h5></a>

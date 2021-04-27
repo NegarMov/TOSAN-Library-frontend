@@ -1,69 +1,68 @@
-<body>
-    <div class="inner">
-        <div class="row featurette" style="margin: 30px;">
-            <div class="col-md-7">
-                <h1 class="featurette-heading">{{book.title}}</h1>
-                <h3 class="text-muted">By: {{book.author.name}}</h3>
-                <h5 class="text-muted">Publisher: {{book.publisher.name}}</h5>
-                <div>
-                    <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 1}"></span>
-                    <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 2}"></span>
-                    <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 3}"></span>
-                    <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 4}"></span>
-                    <span class="fa fa-star" [ngClass]="{'checked' : book.rating >= 5}"></span>
+<div class="inner">
+    <div class="row featurette" style="margin: 0px; padding: 4rem; display: flex; align-items: center; justify-content: center;">
+        <div class="col-md-7">
+            <h1 class="featurette-heading">{{book?.title}}</h1>
+            <h3 class="text-muted">By: {{book?.author?.name}}</h3>
+            <h5 class="text-muted">Publisher: {{book?.publisher?.name}}</h5>
+            <div>
+                <span class="fa fa-star" [ngClass]="{'checked' : book?.rating >= 1}"></span>
+                <span class="fa fa-star" [ngClass]="{'checked' : book?.rating >= 2}"></span>
+                <span class="fa fa-star" [ngClass]="{'checked' : book?.rating >= 3}"></span>
+                <span class="fa fa-star" [ngClass]="{'checked' : book?.rating >= 4}"></span>
+                <span class="fa fa-star" [ngClass]="{'checked' : book?.rating >= 5}"></span>
+            </div>
+            <br>
+            <!-- <h6 class="text-muted">tags:
+                <div style="display: inline-block;" *ngFor="let t of book.tags">
+                    <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{t}}</span>
                 </div>
+            </h6> -->
+            <h6 class="text-muted">genre: <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{book?.genre}}</span></h6>
+            <p class="lead">Summary: {{book?.summary}}</p>
+            <h6 *ngIf="lentToThisUser" class="text-muted" style="font-size: smaller;">borrowed from: {{book?.startDate}} to {{book?.finishDate}}</h6>
+            <div *ngIf="access == 'user'" >
+                <!--====== Buttons =======-->
+                <button class="btn btn-secondary" (click)="onclickRequest()" [disabled]="requestSent">
+                    <i class="fa fa-envelope fa-fw"></i> Send a request to borrow this book</button>
+                <button class="btn btn-secondary" (click)="onclickSave()">
+                    <i class="fa fa-fw" [ngClass]="{'fa-bookmark' : saved(), 'fa-bookmark-o' : !saved()}"></i> {{saveMessage}}</button>
                 <br>
-                <!-- <h6 class="text-muted">tags:
-                    <div style="display: inline-block;" *ngFor="let t of book.tags">
-                        <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{t}}</span>
-                    </div>
-                </h6> -->
-                <h6 class="text-muted">genre: <span style="margin: 1px; color: rgb(83, 81, 81);" class="badge badge-pill badge-warning">{{book.genre}}</span></h6>
-                <p class="lead">Summary: {{book.summary}}</p>
-                <div *ngIf="access == 'user'" >
-                    <!--====== Buttons =======-->
-                    <button class="btn btn-secondary" (click)="onclickRequest()" [disabled]="requestSent">
-                        <i class="fa fa-envelope fa-fw"></i> Send a request to borrow this book</button>
-                    <button class="btn btn-secondary" (click)="onclickSave()">
-                        <i class="fa fa-fw" [ngClass]="{'fa-bookmark' : saved(), 'fa-bookmark-o' : !saved()}"></i> {{saveMessage}}</button>
-                    <br>
-                    <small *ngIf="requestSent">*You can remove this request later from your request panel</small>
-                    <!--====== Star rating =======-->
-                    <div class="rating-box">
-                        <div class="row">
-                            <div class="col-md-12">
-                            <h5>Read it already? Please rate this book!</h5>
-                                <div class="stars">
-                                    <form action=""> 
-                                    <input class="star star-5" id="star-5" type="radio" (change)="onrating5()" name="star"/> 
-                                    <label class="star star-5" for="star-5"></label> 
-                                    <input class="star star-4" id="star-4" type="radio" (change)="onrating4()" name="star"/> 
-                                    <label class="star star-4" for="star-4"></label> 
-                                    <input class="star star-3" id="star-3" type="radio" (change)="onrating3()" name="star"/> 
-                                    <label class="star star-3" for="star-3"></label> 
-                                    <input class="star star-2" id="star-2" type="radio" (change)="onrating2()" name="star"/>
-                                    <label class="star star-2" for="star-2"></label> 
-                                    <input class="star star-1" id="star-1" type="radio" (change)="onrating1()" name="star"/>
-                                    <label class="star star-1" for="star-1"></label> 
-                                    </form>
-                                </div>
-                                <br>
-                                <small *ngIf="userRating != 0">Thanks! You rated this book with {{userRating}} starts.</small>
+                <small *ngIf="requestSent">*You can remove this request later from your request panel</small>
+                <!--====== Star rating =======-->
+                <div class="rating-box">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <h5>Read it already? Please rate this book!</h5>
+                            <div class="stars">
+                                <form action=""> 
+                                <input class="star star-5" id="star-5" type="radio" [checked]="userRating == 5" (change)="onrating5()" name="star"/> 
+                                <label class="star star-5" for="star-5"></label> 
+                                <input class="star star-4" id="star-4" type="radio" [checked]="userRating == 4" (change)="onrating4()" name="star"/> 
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" [checked]="userRating == 3" (change)="onrating3()" name="star"/> 
+                                <label class="star star-3" for="star-3"></label> 
+                                <input class="star star-2" id="star-2" type="radio" [checked]="userRating == 2" (change)="onrating2()" name="star"/>
+                                <label class="star star-2" for="star-2"></label> 
+                                <input class="star star-1" id="star-1" type="radio" [checked]="userRating == 1" (change)="onrating1()" name="star"/>
+                                <label class="star star-1" for="star-1"></label> 
+                                </form>
                             </div>
+                            <br>
+                            <small *ngIf="userRating">Thanks! You rated this book with {{userRating}} starts.</small>
                         </div>
                     </div>
                 </div>
-                <div *ngIf="access == 'admin'">
-                    <br>
-                    <h5>Status:</h5>
-                    <h6 *ngIf="!book.isAvailable" >Borrowed by @{{book.user.username}} from {{book.startDate}}. The due date is {{book.finishDate}}</h6>
-                    <h6 *ngIf="book.isAvailable">Available</h6>
-                </div>
             </div>
-            <div class="col-md-5 float-right">
-                <img *ngIf="!book.isAvailable" src="../../assets/images/unavailable.png" class="unavailable-stamp">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            <div *ngIf="access == 'admin'">
+                <br>
+                <h5>Status:</h5>
+                <h6 *ngIf="!book.isAvailable" >Borrowed by @{{book?.user?.username}} from {{book?.startDate}}. The due date is {{book?.finishDate}}</h6>
+                <h6 *ngIf="book.isAvailable">Available</h6>
             </div>
         </div>
+        <div class="col-md-4 float-right cover-cnt">
+            <img *ngIf="!book.isAvailable" src="../../assets/images/unavailable.png" class="unavailable-stamp">
+            <img height="90%" src="../../assets/images/{{book?.coverUrl}}">
+        </div>
     </div>
-</body>
+</div>

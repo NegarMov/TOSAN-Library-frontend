@@ -29,7 +29,7 @@ export class GenreComponent implements OnInit {
   }
 
   getTopBooks() {
-    return this.genre.books.filter((b) => b.rating == 5);
+    return this.genre.books.filter((b) => b.rating >= 4);
   }
 
   onsearchBook() {

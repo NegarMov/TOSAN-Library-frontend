@@ -71,3 +71,12 @@ input:focus, textarea:focus {
 .shadow {
     text-shadow: 3px 3px 3px black;
 }
+
+a:hover > .hover-effect{
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 5px 5px 10px rgb(36, 36, 36);
+}
+
+.cover-img {
+    align-self: center;
+}

@@ -1,16 +1,13 @@
-<div class="list-group-item list-group-item-action">
-    <div style="display:inline-block;">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">125x125</text></svg>
-    </div>
+<a class="list-group-item list-group-item-action">
+    <img class="hover-effect cover-img" src="../../../assets/images/{{item.book.coverUrl}}" height="150px">
+    <img *ngIf="!item.book.isAvailable" src="../../assets/images/unavailable.png" style="width: 70px; position: absolute; right: 10px; bottom: 10px;">
     <div class="list-group-item-text">
-        <div class="d-flex w-100 justify-content-between">
-            <a routerLink="/book/{{item.book.title}}" target="_blank"><h5 class="mb-1">{{item.book.title}}</h5></a>
-            <button class="btn btn-secondary" style="display: block;" (click)="ondeleteRequest()"><i class="fa fa-trash fa-fw"></i>Delete Request</button>
-        </div>
+        <a routerLink="/book/{{item.book.title}}" target="_blank"><h5 class="mb-1">{{item.book.title}}</h5></a>
         <h6 class="text-muted">By: {{item.book.author.name}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.book.publisher.name}}</h6>
         <small>Sent on: {{item.date}},  </small>
         <small>Status: </small>
         <span class="badge badge-pill" [ngClass]="{'badge-success': item.status=='Accepted', 'badge-danger': item.status=='Rejected', 'badge-info': item.status=='Pending'}">{{item.status}}</span>
     </div>
-</div>
+    <button class="btn btn-secondary float-right" style="display: block; height: fit-content;" (click)="ondeleteRequest()"><i class="fa fa-trash fa-fw"></i>Delete Request</button>
+</a>

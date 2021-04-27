@@ -28,8 +28,8 @@ export class NavigationBarComponent implements OnInit {
     this.isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
     
     if (this.isLogedin) {
-      this.httpService.isAdmin().subscribe(data => {
-        this.access = (data)? "admin" : "user";
+      this.httpService.isAdmin().subscribe(access => {
+        this.access = (access)? "admin" : "user";
         this.httpService.getUsername().subscribe(data => {
           this.username = data.username;
         });

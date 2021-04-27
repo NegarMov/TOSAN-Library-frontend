@@ -1,193 +1,191 @@
 <body>
     <div class="inner">
-        <main role="main">
-            <div class="row" style="margin: 3rem">
-                <div class="col-4">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-book">Add Book</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-author">Add Author</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-publisher">Add Publisher</a>
-                    </div>
+        <div class="row" style="margin: 3rem">
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-book">Add Book</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-author">Add Author</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-publisher">Add Publisher</a>
                 </div>
-                <div class="col-8">
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="list-book">
-                            <h3><i class="fa fa-book fa-fw"></i> Add a new book</h3>
-                            <hr>
-                            <form>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Title</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="title" placeholder="Book Title" [(ngModel)]="newBook.title" required>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-book">
+                        <h3><i class="fa fa-book fa-fw"></i> Add a new book</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Title</span>
                                 </div>
-                                <small *ngIf="!validBookTitle" class="input-error">*book title is required</small>
+                                <input type="text" class="form-control" name="title" placeholder="Book Title" [(ngModel)]="newBook.title" required>
+                            </div>
+                            <small *ngIf="!validBookTitle" class="input-error">*book title is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Author</span>
-                                    </div>
-                                    <select class="form-control select" name="author" [(ngModel)]="newBook.author" required>
-                                        <option *ngFor="let author of getAuthors()" [ngValue]="author">{{author.name}}</option>
-                                    </select>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Author</span>
                                 </div>
-                                <small *ngIf="!validBookAuthor" class="input-error">*book author is required</small>
+                                <select class="form-control select" name="author" [(ngModel)]="newBook.author" required>
+                                    <option *ngFor="let author of getAuthors()" [ngValue]="author">{{author.name}}</option>
+                                </select>
+                            </div>
+                            <small *ngIf="!validBookAuthor" class="input-error">*book author is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Publisher</span>
-                                    </div>
-                                    <select class="form-control select" name="publisher" data-live-search="true" [(ngModel)]="newBook.publisher" required>
-                                        <option *ngFor="let publisher of getPublishers()" [ngValue]="publisher">{{publisher.name}}</option>
-                                    </select>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Publisher</span>
                                 </div>
-                                <small *ngIf="!validBookPublisher" class="input-error">*book publisher is required</small>
+                                <select class="form-control select" name="publisher" data-live-search="true" [(ngModel)]="newBook.publisher" required>
+                                    <option *ngFor="let publisher of getPublishers()" [ngValue]="publisher">{{publisher.name}}</option>
+                                </select>
+                            </div>
+                            <small *ngIf="!validBookPublisher" class="input-error">*book publisher is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Published</span>
-                                    </div>
-                                    <input type="number" max="2021" min="1600" step="1" class="form-control" name="publishing-year" [(ngModel)]="newBook.publicationDate" required>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Published</span>
                                 </div>
-                                <small *ngIf="!validBookPublishingYear" class="input-error">*book publishing year is required</small>
+                                <input type="number" max="2021" min="1600" step="1" class="form-control" name="publishing-year" [(ngModel)]="newBook.publicationDate" required>
+                            </div>
+                            <small *ngIf="!validBookPublishingYear" class="input-error">*book publishing year is required</small>
 
-                                <!-- <app-input-tag></app-input-tag> -->
+                            <!-- <app-input-tag></app-input-tag> -->
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Genre</span>
-                                    </div>
-                                    <select class="form-control select" name="genre" data-live-search="true" [(ngModel)]="newBook.genre">
-                                        <option *ngFor="let genre of genres" [ngValue]="genre.serverID">{{genre.name}}</option>
-                                    </select>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Genre</span>
                                 </div>
-                                <small *ngIf="!validGenre" class="input-error">*book genre is required</small>
+                                <select class="form-control select" name="genre" data-live-search="true" [(ngModel)]="newBook.genre">
+                                    <option *ngFor="let genre of genres" [ngValue]="genre.serverID">{{genre.name}}</option>
+                                </select>
+                            </div>
+                            <small *ngIf="!validGenre" class="input-error">*book genre is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Summary</span>
-                                    </div>
-                                    <textarea class="form-control" name="summary" rows="3" placeholder="Book Summary" [(ngModel)]="newBook.summary"></textarea>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Summary</span>
                                 </div>
+                                <textarea class="form-control" name="summary" rows="3" placeholder="Book Summary" [(ngModel)]="newBook.summary"></textarea>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="input-group-prepend" style="display: inline-block;">
-                                        <span class="input-group-text">Cover</span>
-                                    </div>
-                                    <input type="file" class="form-control-file" style="display: inline-block; width: fit-content; margin-left: 20px;" (change)="onFileChange($event)">
+                            <div class="form-group">
+                                <div class="input-group-prepend" style="display: inline-block;">
+                                    <span class="input-group-text">Cover</span>
                                 </div>
+                                <input type="file" class="form-control-file" style="display: inline-block; width: fit-content; margin-left: 20px;" (change)="onFileChange($event)">
+                            </div>
 
-                                <div class="form-group">
-                                    <input type="submit" value="Add Book" class="btn float-right add-btn" (click)="onaddBook()">
+                            <div class="form-group">
+                                <input type="submit" value="Add Book" class="btn float-right add-btn" (click)="onaddBook()">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="list-author">
+                        <h3><i class="fa fa-edit fa-fw"></i> Add a new Author</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Name</span>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade show" id="list-author">
-                            <h3><i class="fa fa-edit fa-fw"></i> Add a new Author</h3>
-                            <hr>
-                            <form>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Name</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Author Name" [(ngModel)]="newAuthor.name" required>
-                                </div>
-                                <small *ngIf="!validAuthorName" class="input-error">*author name is required</small>
+                                <input type="text" class="form-control" name="name" placeholder="Author Name" [(ngModel)]="newAuthor.name" required>
+                            </div>
+                            <small *ngIf="!validAuthorName" class="input-error">*author name is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Birth Date</span>
-                                    </div>
-                                    <input type="date" class="form-control" [value]="newAuthor.bornDate | date:'yyyy-MM-dd'" (input)="newAuthor.bornDate=$event.target.value">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Birth Date</span>
                                 </div>
-                                <small *ngIf="!validAuthorBirthDate" class="input-error">*please select a date</small>
-                                
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Death Date</span>
-                                    </div>
-                                    <input type="date" class="form-control" [value]="newAuthor.dieDate | date:'yyyy-MM-dd'" (input)="newAuthor.dieDate=$event.target.value">
+                                <input type="date" class="form-control" [value]="newAuthor.bornDate | date:'yyyy-MM-dd'" (input)="newAuthor.bornDate=$event.target.value">
+                            </div>
+                            <small *ngIf="!validAuthorBirthDate" class="input-error">*please select a date</small>
+                            
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Death Date</span>
                                 </div>
-                                <small class="input-error text-muted">*if you don't choose a death date that means the author is still alive</small>
+                                <input type="date" class="form-control" [value]="newAuthor.dieDate | date:'yyyy-MM-dd'" (input)="newAuthor.dieDate=$event.target.value">
+                            </div>
+                            <small class="input-error text-muted">*if you don't choose a death date that means the author is still alive</small>
 
-                                <div class="form-group">
-                                    <input type="submit" value="Add Author" class="btn float-right add-btn" (click)="onaddAuthor()">
+                            <div class="form-group">
+                                <input type="submit" value="Add Author" class="btn float-right add-btn" (click)="onaddAuthor()">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="list-publisher">
+                        <h3><i class="fa fa-newspaper-o fa-fw"></i> Add a new Publisher</h3>
+                        <hr>
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Name</span>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade show" id="list-publisher">
-                            <h3><i class="fa fa-newspaper-o fa-fw"></i> Add a new Publisher</h3>
-                            <hr>
-                            <form>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Name</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Publisher Name" [(ngModel)]="newPublisher.name" required>
-                                </div>
-                                <small *ngIf="!validPublisherName" class="input-error">*publisher name is required</small>
+                                <input type="text" class="form-control" name="name" placeholder="Publisher Name" [(ngModel)]="newPublisher.name" required>
+                            </div>
+                            <small *ngIf="!validPublisherName" class="input-error">*publisher name is required</small>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Foundation</span>
-                                    </div>
-                                    <input type="date" class="form-control" [value]="newPublisher.establishedDate | date:'yyyy-MM-dd'" (input)="newPublisher.establishedDate=$event.target.value">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Foundation</span>
                                 </div>
-                                <small *ngIf="!validPublisherDate" class="input-error">*please select a date</small>
+                                <input type="date" class="form-control" [value]="newPublisher.establishedDate | date:'yyyy-MM-dd'" (input)="newPublisher.establishedDate=$event.target.value">
+                            </div>
+                            <small *ngIf="!validPublisherDate" class="input-error">*please select a date</small>
 
-                                <div class="form-group">
-                                    <input type="submit" value="Add Publisher" class="btn float-right add-btn" (click)="onaddPublisher()">
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group">
+                                <input type="submit" value="Add Publisher" class="btn float-right add-btn" (click)="onaddPublisher()">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="header-box">
-                    <h1 style="display: inline-block;"><i class="fa fa-book fa-fw"></i> Books</h1>
-                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search Books" [(ngModel)]="bookSearchedToken" [ngModelOptions]="{standalone: true}">
-                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchBook()">Search</button>
-                    </form>
-                </div>
-                <div class="list-group list-group-flush">
-                    <div *ngFor="let b of searchedBooks">
-                        <app-editable-book-item [item]="b" [authors]="getAuthors()" [publishers]="getPublishers()" (deleted)="deleteBook($event)"></app-editable-book-item>
-                    </div>
+        <div class="container">
+            <div class="header-box">
+                <h1 style="display: inline-block;"><i class="fa fa-book fa-fw"></i> Books</h1>
+                <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search Books" [(ngModel)]="bookSearchedToken" [ngModelOptions]="{standalone: true}">
+                    <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchBook()">Search</button>
+                </form>
+            </div>
+            <div class="list-group list-group-flush">
+                <div *ngFor="let b of searchedBooks">
+                    <app-editable-book-item [item]="b" [authors]="getAuthors()" [publishers]="getPublishers()" (deleted)="deleteBook($event)"></app-editable-book-item>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="header-box">
-                    <h1 style="display: inline-block;"><i class="fa fa-edit fa-fw"></i> Authors</h1>
-                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search Authors" [(ngModel)]="authorSearchedToken" [ngModelOptions]="{standalone: true}">
-                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchAuthor()">Search</button>
-                    </form>
-                </div>
-                <div class="list-group list-group-flush">
-                    <div *ngFor="let a of searchedAuthors">
-                        <app-author-item [item]="a" (deleted)="deleteAuthor($event)" (edited)="editPublisher()"></app-author-item>
-                    </div>
+        <div class="container">
+            <div class="header-box">
+                <h1 style="display: inline-block;"><i class="fa fa-edit fa-fw"></i> Authors</h1>
+                <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search Authors" [(ngModel)]="authorSearchedToken" [ngModelOptions]="{standalone: true}">
+                    <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchAuthor()">Search</button>
+                </form>
+            </div>
+            <div class="list-group list-group-flush">
+                <div *ngFor="let a of searchedAuthors">
+                    <app-author-item [item]="a" (deleted)="deleteAuthor($event)" (edited)="editPublisher()"></app-author-item>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="header-box">
-                    <h1 style="display: inline-block;"><i class="fa fa-newspaper-o fa-fw"></i> Publishers</h1>
-                    <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search Publishers" [(ngModel)]="publisherSearchedToken" [ngModelOptions]="{standalone: true}">
-                        <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchPublisher()">Search</button>
-                    </form>
-                </div>
-                <div class="list-group list-group-flush">
-                    <div *ngFor="let p of searchedPublishers">
-                        <app-publisher-item [item]="p" (deleted)="deletePublisher($event)" (edited)="editPublisher()"></app-publisher-item>
-                    </div>
+        <div class="container">
+            <div class="header-box">
+                <h1 style="display: inline-block;"><i class="fa fa-newspaper-o fa-fw"></i> Publishers</h1>
+                <form class="form-inline mt-2 mt-md-0 float-right" style="display: inline-block;">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search Publishers" [(ngModel)]="publisherSearchedToken" [ngModelOptions]="{standalone: true}">
+                    <button class="btn btn-yellow my-2 my-sm-0" type="submit" (click)="onsearchPublisher()">Search</button>
+                </form>
+            </div>
+            <div class="list-group list-group-flush">
+                <div *ngFor="let p of searchedPublishers">
+                    <app-publisher-item [item]="p" (deleted)="deletePublisher($event)" (edited)="editPublisher()"></app-publisher-item>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 </body>

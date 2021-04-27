@@ -2,7 +2,7 @@
     <main role="main">
         <div class="row featurette" style="margin: 30px;">
             <a *ngFor="let genre of genres" class="container genre-cnt" data-toggle="collapse" href="#{{genre.name}}-books">
-                <img class="rounded-circle" width="130" height="130" [src]="genre.imageSrc"/> 
+                <img class="rounded-circle hover-effect" width="130" height="130" [src]="genre.imageSrc"/> 
                 <div class="genre-text-cnt">
                     <h2 class="genre-text">{{genre.name}}</h2>
                     <br>

@@ -3,6 +3,7 @@ import { Publisher } from "./publisher";
 import { User } from "./user";
 
 export class Book {
+    //general information
     title: string;
     author: Author;
     publisher: Publisher;
@@ -12,6 +13,7 @@ export class Book {
     tags: string[];
     summary: string;
     coverUrl: string;
+    //user information
     isAvailable: boolean;
     startDate: string;
     finishDate: string;

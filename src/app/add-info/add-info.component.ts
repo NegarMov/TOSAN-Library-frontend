@@ -95,7 +95,7 @@ export class AddInfoComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    this.newBook.coverUrl = "../../assets/" + event.target.files[0].name;
+    this.newBook.coverUrl = event.target.files[0].name;
   }
 
   onaddAuthor() {

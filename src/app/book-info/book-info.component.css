@@ -7,14 +7,22 @@
     font-weight: 300;
     line-height: 1;
     letter-spacing: -.05rem;
-    margin-top: 3rem;
+    margin-top: 0px;
 } 
 
 .unavailable-stamp {
-    width: 125px; 
+    width: 30%; 
     position: absolute; 
-    right: 35px; 
-    top: 15px;
+    right: 10px; 
+    top: 10px;
+}
+
+.cover-cnt {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: rgba(59, 59, 59, 0.9); 
+    aspect-ratio: 1;
 }
   
 /***Stars***/

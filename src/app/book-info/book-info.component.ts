@@ -16,7 +16,10 @@ export class BookInfoComponent implements OnInit {
 
   saveMessage: string = "";
   requestSent: boolean = false;
-  userRating: number = 0; //for user
+
+  lentToThisUser: boolean = false;
+
+  userRating: number;
 
   constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) { }
 
@@ -24,7 +27,7 @@ export class BookInfoComponent implements OnInit {
     const title = this.route.snapshot.paramMap.get('title');
     this.httpService.getBookByName(title).subscribe(data => {
       if (data)
-          this.book = data;  
+        this.book = data;  
       else {
         this.router.navigate(['page-not-found']);
         return;
@@ -38,10 +41,18 @@ export class BookInfoComponent implements OnInit {
     });
 
     var isLogedin = (localStorage.getItem('userID')) && (Number.parseInt(localStorage.getItem('userID')) >=0);
-    if (isLogedin)
+    if (isLogedin) {
       this.httpService.isAdmin().subscribe(data => {
         this.access = (data)? "admin" : "user";
       });
+      this.httpService.getUsername().subscribe(data => {
+        if (data.username == this.book.user.username)
+          this.lentToThisUser = true;
+      });
+      this.httpService.getUserRating(this.book.title).subscribe(data => {
+        this.userRating = Math.round(data);
+      });
+    }
   }
 
   onclickSave() {
@@ -64,14 +75,19 @@ export class BookInfoComponent implements OnInit {
     return this.saveMessage.startsWith("Remove");
   }
 
-  onrating5() {this.userRating = 5;}
+  setRating(rating: number) {
+    this.userRating = rating;
+    this.httpService.addOrUpdateRating(rating, this.book.title).subscribe();
+  }
 
-  onrating4() {this.userRating = 4;}
+  onrating5() {this.setRating(5);}
 
-  onrating3() {this.userRating = 3;}
+  onrating4() {this.setRating(4);}
 
-  onrating2() {this.userRating = 2;}
+  onrating3() {this.setRating(3);}
 
-  onrating1() {this.userRating = 1;}  
+  onrating2() {this.setRating(2);}
+
+  onrating1() {this.setRating(1);}  
 
 }

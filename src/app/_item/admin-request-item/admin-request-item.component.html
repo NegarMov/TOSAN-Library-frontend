@@ -1,25 +1,21 @@
-<div class="list-group-item list-group-item-action">
-    <div style="display:inline-block;">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">125x125</text></svg>
-    </div>
+<a class="list-group-item list-group-item-action">
+    <img class="hover-effect cover-img" src="../../../assets/images/{{item.book.coverUrl}}" height="150px">
     <div class="list-group-item-text">
-        <div class="d-flex w-100 justify-content-between">
-            <a routerLink="/book/{{item.book.title}}" target="_blank"><h5 class="mb-1">{{item.book.title}}</h5></a>
-            <div class="input-group form-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-info">Status</span>
-                </div>
-                <select class="form-control select" name="status" data-live-search="true" [(ngModel)]="item.status" (change)="onchangeStatus($event.target.value)">
-                    <option [disabled]="!item.book.isAvailable">Accepted</option>
-                    <option>Rejected</option>
-                    <option disabled>Pending</option>
-                </select>
-            </div>
-        </div>
+        <a routerLink="/book/{{item.book.title}}" target="_blank"><h5 class="mb-1">{{item.book.title}}</h5></a>
         <h6 class="text-muted">By: {{item.book.author.name}}</h6>
         <h6 class="text-muted" style="font-size: smaller;">Publisher: {{item.book.publisher.name}}</h6>
         <small>Sent by @{{item.user.username}} on: {{item.date}},  </small>
         <small>Current status: </small>
         <span class="badge badge-pill" [ngClass]="{'badge-success': item.status=='Accepted', 'badge-danger': item.status=='Rejected', 'badge-info': item.status=='Pending'}">{{item.status}}</span>
     </div>
-</div>
+    <div class="input-group form-group float-right">
+        <div class="input-group-prepend" style="height: fit-content;">
+            <span class="input-group-text bg-info">Status</span>
+        </div>
+        <select class="form-control select" name="status" data-live-search="true" [(ngModel)]="item.status" (change)="onchangeStatus($event.target.value)">
+            <option [disabled]="!item.book.isAvailable">Accepted</option>
+            <option>Rejected</option>
+            <option disabled>Pending</option>
+        </select>
+    </div>
+</a>
